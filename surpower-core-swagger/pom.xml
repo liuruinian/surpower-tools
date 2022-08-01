@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>surpower-core-swagger</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- swagger -->

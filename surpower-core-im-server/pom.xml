@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>surpower-core-im-server</artifactId>
+    <name>${project.artifactId}</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
