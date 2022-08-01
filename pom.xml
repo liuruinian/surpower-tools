@@ -5,7 +5,6 @@
     <artifactId>surpower-tools</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>surpower-core-swagger</module>
         <module>surpower-core-im-server</module>
     </modules>
     <packaging>pom</packaging>
@@ -111,12 +110,6 @@
                 <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>io.github.liuruinian</groupId>
-                <artifactId>surpower-core-swagger</artifactId>
-                <version>${core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
