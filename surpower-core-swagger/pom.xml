@@ -11,7 +11,7 @@
 
     <artifactId>surpower-core-swagger</artifactId>
     <name>${project.artifactId}</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- swagger -->
