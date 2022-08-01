@@ -2,7 +2,6 @@ package io.github.liuruinian.im.core.restapi;
 
 
 import io.github.liuruinian.im.core.params.relationchain.*;
-import io.github.liuruinian.im.server.relationchain.*;
 
 /**
  * @author liuruinian

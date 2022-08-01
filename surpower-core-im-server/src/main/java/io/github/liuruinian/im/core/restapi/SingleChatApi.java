@@ -1,7 +1,6 @@
 package io.github.liuruinian.im.core.restapi;
 
 import io.github.liuruinian.im.core.params.singlechat.*;
-import io.github.liuruinian.im.server.singlechat.*;
 
 /**
  * @author liuruinian
