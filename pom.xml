@@ -4,6 +4,10 @@
     <groupId>com.surpower</groupId>
     <artifactId>surpower-tools</artifactId>
     <version>1.0.0</version>
+    <modules>
+        <module>surpower-core-swagger</module>
+        <module>surpower-core-im-server</module>
+    </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
     <description>
@@ -82,40 +86,6 @@
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
-
-        <!-- swagger -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.swagger</groupId>
-                    <artifactId>swagger-models</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>1.5.22</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.1</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -140,6 +110,12 @@
                 <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.surpower</groupId>
+                <artifactId>surpower-core-swagger</artifactId>
+                <version>${core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
