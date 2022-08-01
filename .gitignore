@@ -1,0 +1,36 @@
+# maven ignore
+target/
+*.war
+*.zip
+*.tar
+*.tar.gz
+*.class
+*.project
+*.factorypath
+
+# eclipse ignore
+.settings/
+.classpath
+bin/
+NewCustServSer/
+SrenewSer/
+sms-drugstore/
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# else
