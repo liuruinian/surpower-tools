@@ -11,6 +11,7 @@
 
     <artifactId>surpower-core-im-server</artifactId>
     <name>${project.artifactId}</name>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
