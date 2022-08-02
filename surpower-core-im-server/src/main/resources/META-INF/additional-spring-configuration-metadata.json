@@ -1,0 +1,56 @@
+{
+  "groups": [
+    {
+      "name": "tim",
+      "type": "io.github.liuruinian.im.server.properties.ImServerProperties",
+      "sourceType": "io.github.liuruinian.im.server.properties.ImServerProperties",
+      "description": "IM服务端配置."
+    },
+    {
+      "name": "tim.user-sign",
+      "type": "io.github.liuruinian.im.server.properties.UserSignProperties",
+      "sourceType": "io.github.liuruinian.im.server.properties.UserSignProperties",
+      "description": "UserSign配置."
+    },
+    {
+      "name": "tim.user-sign.repository.redis",
+      "type": "io.github.liuruinian.im.server.properties.RedisUserSignProperties",
+      "sourceType": "io.github.liuruinian.im.server.properties.RedisUserSignProperties",
+      "description": "UserSignRedisKey配置."
+    }
+  ],
+  "properties": [
+    {
+      "name": "tim.sdk-app-id",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.im.server.properties.ImServerProperties",
+      "description": "应用SDKAppId."
+    },
+    {
+      "name": "tim.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.im.server.properties.ImServerProperties",
+      "description": "应用密钥."
+    },
+    {
+      "name": "tim.app-manager",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.im.server.properties.ImServerProperties",
+      "description": "App管理员."
+    },
+    {
+      "name": "tim.user-sign.expire",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.im.server.properties.UserSignProperties",
+      "description": "UserSign有效期(单位：秒)，默认：7天.",
+      "defaultValue": "7 * 24 * 3600"
+    },
+    {
+      "name": "tim.user-sign.repository.redis.key-prefix",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.im.server.properties.RedisUserSignProperties",
+      "description": "UserSignCacheKey.",
+      "defaultValue": "tim:im_user_sign:"
+    }
+  ]
+}
