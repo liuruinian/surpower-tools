@@ -1,5 +1,6 @@
 package io.github.liuruinian.im.server.autoconfig;
 
+import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.im.core.params.accountmanage.*;
 import io.github.liuruinian.im.core.params.globalmute.GetNoSpeakingParam;
 import io.github.liuruinian.im.core.params.globalmute.SetNoSpeakingParam;
@@ -23,6 +24,7 @@ import io.github.liuruinian.im.server.api.recentcontacts.DefaultRecentContactsAp
 import io.github.liuruinian.im.server.api.relationchain.DefaultRelationChainApi;
 import io.github.liuruinian.im.server.api.singlechat.DefaultSingleChatApi;
 import io.github.liuruinian.im.server.controller.accountmanage.AccountManageController;
+import io.github.liuruinian.im.server.controller.callback.CallbackController;
 import io.github.liuruinian.im.server.controller.globalmute.GlobalMuteController;
 import io.github.liuruinian.im.server.controller.groupmanage.GroupManageController;
 import io.github.liuruinian.im.server.controller.operationmanage.OperationManageController;
@@ -60,7 +62,8 @@ import java.lang.reflect.Method;
 @EnableConfigurationProperties(value = {ImServerProperties.class, UserSignProperties.class, RedisUserSignProperties.class})
 @ComponentScan(basePackages = {
         "io.github.liuruinian.im.server.repository",
-        "io.github.liuruinian.im.server.sign"
+        "io.github.liuruinian.im.server.sign",
+        "io.github.liuruinian.im.server.callback"
 })
 @Slf4j
 public class ImServerAutoConfiguration {
@@ -195,6 +198,18 @@ public class ImServerAutoConfiguration {
                 .methods(RequestMethod.GET).build();
 
         mapping.registerMapping(mappingInfo, controller, userSignMethod);
+    }
+
+    @Autowired(required = false)
+    @ConditionalOnBean(RequestMappingHandlerMapping.class)
+    public void setCallbackWebMapping(RequestMappingHandlerMapping mapping,
+                                      CallbackController controller) throws NoSuchMethodException, SecurityException {
+
+        Method callbackMethod = CallbackController.class.getMethod("imcallback", JSONObject.class);
+        RequestMappingInfo mappingInfo = RequestMappingInfo.paths(BASE_PATH + "/imcallback")
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(mappingInfo, controller, callbackMethod);
     }
 
     /**
