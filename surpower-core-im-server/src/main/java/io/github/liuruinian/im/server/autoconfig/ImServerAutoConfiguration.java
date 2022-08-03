@@ -39,6 +39,7 @@ import io.github.liuruinian.im.server.properties.UserSignProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
@@ -65,6 +66,7 @@ import java.lang.reflect.Method;
         "io.github.liuruinian.im.server.sign",
         "io.github.liuruinian.im.server.callback"
 })
+@ConditionalOnWebApplication
 @Slf4j
 public class ImServerAutoConfiguration {
 
