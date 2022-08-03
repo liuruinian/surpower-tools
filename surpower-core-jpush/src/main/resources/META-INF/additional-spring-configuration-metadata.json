@@ -1,0 +1,76 @@
+{
+  "groups": [
+    {
+      "name": "jpush",
+      "type": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "极光推送配置."
+    }
+  ],
+  "properties": [
+    {
+      "name": "jpush.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "defaultValue": "true",
+      "description": "是否启用极光推送."
+    },
+    {
+      "name": "jpush.master-secret",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "masterSecret(从极光后台获得)."
+    },
+    {
+      "name": "jpush.app-key",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "appKey(从极光后台获得)."
+    },
+    {
+      "name": "jpush.use-proxy",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "defaultValue": "false",
+      "description": "是否启用代理服务器."
+    },
+    {
+      "name": "jpush.proxy-host",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "代理服务器主机名或IP."
+    },
+    {
+      "name": "jpush.proxy-port",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "代理服务器端口号."
+    },
+    {
+      "name": "jpush.proxy-username",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "代理服务器用户名."
+    },
+    {
+      "name": "jpush.proxy-password",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "description": "代理服务器密码."
+    },
+    {
+      "name": "jpush.retry-interval",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "defaultValue": "500",
+      "description": "重试时间间隔(毫秒)."
+    },
+    {
+      "name": "jpush.retry-max-attempts",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.jpush.properties.JPushProperties",
+      "defaultValue": "0",
+      "description": "最大重试次数(0表示不重试)."
+    }
+  ]
+}
