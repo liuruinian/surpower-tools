@@ -2,10 +2,6 @@ package io.github.liuruinian.im.server.callback;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.im.server.callback.friendadd.FriendAddCallbackProvider;
-import io.github.liuruinian.im.server.callback.group.AfterGroupCreatedCallbackProvider;
-import io.github.liuruinian.im.server.callback.group.AfterMemberExitCallbackProvider;
-import io.github.liuruinian.im.server.callback.group.AfterNewMemberJoinCallbackProvider;
-import io.github.liuruinian.im.server.callback.statechange.StateChangeCallbackProvider;
 import io.github.liuruinian.im.server.properties.ImServerProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -40,18 +36,6 @@ public class ProviderCallback implements CallbackHandler {
     private FriendAddCallbackProvider friendAddCallbackProvider;
 
     @Autowired
-    private StateChangeCallbackProvider stateChangeCallbackProvider;
-
-    @Autowired
-    private AfterGroupCreatedCallbackProvider afterGroupCreatedCallbackProvider;
-
-    @Autowired
-    private AfterNewMemberJoinCallbackProvider afterNewMemberJoinCallbackProvider;
-
-    @Autowired
-    private AfterMemberExitCallbackProvider afterMemberExitCallbackProvider;
-
-    @Autowired
     @Lazy
     private ImServerProperties imServerProperties;
 
@@ -61,22 +45,6 @@ public class ProviderCallback implements CallbackHandler {
 
         if (FRIEND_ADD_CALLBACK_COMMAND.equals(callbackCommand)) {
             friendAddCallbackProvider.handleCallback(sdkAppid, callbackCommand, clientIP, optPlatform, requestBody);
-        }
-
-        if (USER_STATE_CHANGE.equals(callbackCommand)) {
-            stateChangeCallbackProvider.handleCallback(sdkAppid, callbackCommand, clientIP, optPlatform, requestBody);
-        }
-
-        if (GROUP_AFTER_CREATED_COMMAND.equals(callbackCommand)) {
-            afterGroupCreatedCallbackProvider.handleCallback(sdkAppid, callbackCommand, clientIP, optPlatform, requestBody);
-        }
-
-        if (GROUP_AFTER_NEW_MEMBER_JOIN.equals(callbackCommand)) {
-            afterNewMemberJoinCallbackProvider.handleCallback(sdkAppid, callbackCommand, clientIP, optPlatform, requestBody);
-        }
-
-        if (GROUP_AFTER_MEMBER_EXIST.equals(callbackCommand)) {
-            afterMemberExitCallbackProvider.handleCallback(sdkAppid, callbackCommand, clientIP, optPlatform, requestBody);
         }
     }
 
