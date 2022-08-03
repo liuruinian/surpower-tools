@@ -64,7 +64,8 @@ import java.lang.reflect.Method;
 @ComponentScan(basePackages = {
         "io.github.liuruinian.im.server.repository",
         "io.github.liuruinian.im.server.sign",
-        "io.github.liuruinian.im.server.callback"
+        "io.github.liuruinian.im.server.callback",
+        "io.github.liuruinian.im.server.controller"
 })
 @ConditionalOnWebApplication
 @Slf4j
