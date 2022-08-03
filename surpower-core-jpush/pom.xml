@@ -9,58 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>surpower-core-im-server</artifactId>
+    <artifactId>surpower-core-jpush</artifactId>
     <name>${project.artifactId}</name>
     <version>${core.version}</version>
     <packaging>jar</packaging>
 
-    <description>腾讯云IM即时通讯</description>
+    <description>极光推送</description>
 
     <dependencies>
-        <!-- swagger -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.swagger</groupId>
-                    <artifactId>swagger-models</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>1.5.22</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-
-        <!-- IM服务端用户签名计算API -->
-        <dependency>
-            <groupId>com.github.tencentyun</groupId>
-            <artifactId>tls-sig-api-v2</artifactId>
-            <version>2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+            <version>3.4.6</version>
         </dependency>
 
         <dependency>
@@ -69,10 +29,9 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 加入redis的处理 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
@@ -150,4 +109,5 @@
             </distributionManagement>
         </profile>
     </profiles>
+
 </project>
