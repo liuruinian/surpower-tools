@@ -61,9 +61,9 @@
         <lombok.version>1.18.12</lombok.version>
         <fastjson.version>1.2.70</fastjson.version>
         <hutool.version>5.6.2</hutool.version>
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>3.0.0</swagger.version>
 
-        <spring-boot.version>2.2.9.RELEASE</spring-boot.version>
+        <spring-boot.version>2.7.2</spring-boot.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>
         <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2.2.1.RELEASE</spring-cloud-alibaba-dependencies.version>
