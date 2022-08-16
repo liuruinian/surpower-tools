@@ -46,7 +46,7 @@ public class DefaultAuthTokenService extends AbstractAuthTokenService {
                 .execute();
 
         if (response.isOk()) {
-            String x_subject_token = response.header("x-subject-token");
+            String x_subject_token = response.header("X-Subject-Token");
             if (StringUtils.isBlank(x_subject_token)) {
                 throw new XSubjectTokenEmptyException();
             }
