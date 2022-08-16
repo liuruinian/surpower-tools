@@ -35,6 +35,16 @@ public class HuaweiOcrProperties {
     private String projectName;
 
     /**
+     * 承载REST服务端点的服务器域名或IP
+     */
+    private String endpoint;
+
+    /**
+     * 项目ID
+     */
+    private String projectId;
+
+    /**
      * Token认证请求地址
      */
     private String  authTokenUrl = "https://iam.cn-north-4.myhuaweicloud.com";

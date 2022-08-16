@@ -14,5 +14,18 @@ public class HuaweiCloudOcrApiConstant {
      */
     public static final String X_AUTH_TOKEN_API = "/v3/auth/tokens";
 
+    /**
+     * 身份证识别API
+     */
+    public static final String OCR_ID_CARD_API = "/ocr/id-card";
 
+    /**
+     * 行驶证识别API
+     */
+    public static final String OCR_VEHICLE_LICENSE_API = "/ocr/vehicle-license";
+
+    /**
+     * 驾驶证识别API
+     */
+    public static final String OCR_DRIVER_LICENSE_API = "/ocr/driver-license";
 }

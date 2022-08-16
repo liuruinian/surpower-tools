@@ -34,6 +34,18 @@
       "defaultValue": "cn-north-4"
     },
     {
+      "name": "huawei.ocr.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "承载REST服务端点的服务器域名或IP."
+    },
+    {
+      "name": "huawei.ocr.project-id",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "项目ID."
+    },
+    {
       "name": "huawei.ocr.auth-token-url",
       "type": "java.lang.String",
       "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",

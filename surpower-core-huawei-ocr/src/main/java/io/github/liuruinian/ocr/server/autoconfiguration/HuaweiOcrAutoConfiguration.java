@@ -21,7 +21,8 @@ import java.lang.reflect.Method;
 @EnableConfigurationProperties(value = {HuaweiOcrProperties.class})
 @ComponentScan(basePackages = {
         "io.github.liuruinian.ocr.server.repository",
-        "io.github.liuruinian.ocr.server.controller"
+        "io.github.liuruinian.ocr.server.controller",
+        "io.github.liuruinian.ocr.server.ocrimpl"
 })
 public class HuaweiOcrAutoConfiguration {
 
