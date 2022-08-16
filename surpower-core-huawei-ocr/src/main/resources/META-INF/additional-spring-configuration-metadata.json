@@ -1,0 +1,55 @@
+{
+  "groups": [
+    {
+      "name": "huawei.ocr",
+      "type": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "华为云OCR相关配置参数."
+    }
+  ],
+  "properties": [
+    {
+      "name": "huawei.ocr.username",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "IAM用户名."
+    },
+    {
+      "name": "huawei.ocr.password",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "IAM用户名密码."
+    },
+    {
+      "name": "huawei.ocr.domain-name",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "domain name."
+    },
+    {
+      "name": "huawei.ocr.project-name",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "project name，如cn-north-4.",
+      "defaultValue": "cn-north-4"
+    },
+    {
+      "name": "huawei.ocr.auth-token-url",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "Token认证请求地址."
+    },
+    {
+      "name": "huawei.ocr.auth-token-expire",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "x-auth-token有效期：默认24小时."
+    },
+    {
+      "name": "huawei.ocr.auth-token-key-prefix",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties",
+      "description": "x-auth-token缓存key前缀."
+    }
+  ]
+}

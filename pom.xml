@@ -7,6 +7,7 @@
     <modules>
         <module>surpower-core-im-server</module>
         <module>surpower-core-jpush</module>
+        <module>surpower-core-huawei-ocr</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
