@@ -7,8 +7,6 @@ import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 import io.github.liuruinian.ocr.core.param.OcrMvsInvoiceParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
-import io.github.liuruinian.ocr.server.controller.AuthTokenController;
-import io.github.liuruinian.ocr.server.controller.OcrController;
 import io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
