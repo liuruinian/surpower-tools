@@ -2,6 +2,7 @@ package io.github.liuruinian.ocr.server.autoconfiguration;
 
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
+import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
@@ -107,5 +108,12 @@ public class HuaweiOcrAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
+
+        // driver-license
+        Method driverLicenseMethod = OcrController.class.getMethod("ocrDriverLicense", OcrDriverLicenseParam.class);
+        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/driver-license")
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
     }
 }
