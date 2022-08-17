@@ -63,7 +63,7 @@ public class HuaweiOcrAutoConfiguration {
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    public void setUserSignWebMapping(RequestMappingHandlerMapping mapping,
+    public void setAuthTokenWebMapping(RequestMappingHandlerMapping mapping,
                                       AuthTokenController controller) throws NoSuchMethodException, SecurityException {
 
         Method authTokenMethod = AuthTokenController.class.getMethod("getRefreshAuthToken");
@@ -93,8 +93,8 @@ public class HuaweiOcrAutoConfiguration {
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    public void setUserSignWebMapping(RequestMappingHandlerMapping mapping,
-                                      OcrController controller) throws NoSuchMethodException, SecurityException {
+    public void setOcrWebMapping(RequestMappingHandlerMapping mapping,
+                                 OcrController controller) throws NoSuchMethodException, SecurityException {
 
         // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);

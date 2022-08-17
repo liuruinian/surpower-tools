@@ -11,6 +11,7 @@ import io.github.liuruinian.ocr.core.util.HuaweiOcrApiUtil;
 import io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class DefaultOcrDriverLicenseApi extends AbstractOcrDriverLicenseApi {
     private AuthTokenService    authTokenService;
 
     @Autowired
+    @Lazy
     public void setAuthTokenService(AuthTokenService authTokenService) {
         this.authTokenService = authTokenService;
     }
