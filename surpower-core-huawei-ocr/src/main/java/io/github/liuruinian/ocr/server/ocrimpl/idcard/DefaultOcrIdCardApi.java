@@ -42,6 +42,7 @@ public class DefaultOcrIdCardApi extends AbstractOcrIdCardApi {
 
         try {
             String requestBody = JSONObject.toJSONString(param, true);
+            log.info("[DefaultOcrIdCardApi] -> request body: \n{}", requestBody);
 
             HttpResponse response = HttpUtil.createPost(requestUri)
                     .header(Header.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
