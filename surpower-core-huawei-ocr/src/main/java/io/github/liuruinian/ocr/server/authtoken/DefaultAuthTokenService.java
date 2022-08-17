@@ -104,7 +104,11 @@ public class DefaultAuthTokenService extends AbstractAuthTokenService {
 
         body.put("auth", auth);
 
-        return JSONObject.toJSONString(body, true);
+        String requestBody = JSONObject.toJSONString(body, true);
+
+        log.info("[TokenAuth] -> request body: \n{}", requestBody);
+
+        return requestBody;
     }
 
     @Override

@@ -57,7 +57,7 @@
         <maven.plugin.version>3.8.1</maven.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <core.version>1.0.10</core.version>
+        <core.version>1.0.11</core.version>
 
         <lombok.version>1.18.12</lombok.version>
         <fastjson.version>1.2.70</fastjson.version>
