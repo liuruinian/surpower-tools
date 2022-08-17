@@ -11,10 +11,12 @@ import io.github.liuruinian.ocr.core.exception.InvalidAuthTokenUrlException;
 import io.github.liuruinian.ocr.core.exception.XSubjectTokenEmptyException;
 import io.github.liuruinian.ocr.core.util.StringUtils;
 import io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 
 import java.util.Collections;
 
+@Slf4j
 public class DefaultAuthTokenService extends AbstractAuthTokenService {
 
     private final AuthTokenRepository repository;
@@ -46,6 +48,11 @@ public class DefaultAuthTokenService extends AbstractAuthTokenService {
                 .execute();
 
         if (response.isOk()) {
+            if (log.isInfoEnabled()) {
+                log.info("[DefaultAuthTokenService] -> Token Auth Http Request Success!");
+                log.info("[TokenAuth] -> response headers: \n{}", response.headers());
+            }
+
             String x_subject_token = response.header("X-Subject-Token");
             if (StringUtils.isBlank(x_subject_token)) {
                 throw new XSubjectTokenEmptyException();
