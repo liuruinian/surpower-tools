@@ -4,6 +4,7 @@ import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
 import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
+import io.github.liuruinian.ocr.core.param.OcrMvsInvoiceParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
 import io.github.liuruinian.ocr.server.controller.AuthTokenController;
@@ -115,5 +116,12 @@ public class HuaweiOcrAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
+
+        // mvs-invoice
+        Method mvsInvoiceMethod = OcrController.class.getMethod("ocrMvsInvoice", OcrMvsInvoiceParam.class);
+        RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/mvs-invoice")
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(mvsInvoiceMappingInfo, controller, mvsInvoiceMethod);
     }
 }
