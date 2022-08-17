@@ -3,6 +3,7 @@ package io.github.liuruinian.ocr.server.autoconfiguration;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
+import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
 import io.github.liuruinian.ocr.server.controller.AuthTokenController;
 import io.github.liuruinian.ocr.server.controller.OcrController;
@@ -93,10 +94,18 @@ public class HuaweiOcrAutoConfiguration {
     public void setUserSignWebMapping(RequestMappingHandlerMapping mapping,
                                       OcrController controller) throws NoSuchMethodException, SecurityException {
 
+        // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
         RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/id-card")
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(idCardMappingInfo, controller, idCardMethod);
+
+        // vehicle-license
+        Method vehicleLicenseMethod = OcrController.class.getMethod("ocrVehicleLicense", OcrVehicleLicenseParam.class);
+        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/vehicle-license")
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
     }
 }

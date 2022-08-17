@@ -5,7 +5,7 @@ import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 /**
  * @author liuruinian
  * <p>
- *     huawei ocr rest api
+ *     huawei ocr id-card api
  * </p>
  */
 public interface IdCardOcrApi {

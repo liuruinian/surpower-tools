@@ -1,8 +1,11 @@
 package io.github.liuruinian.ocr.server.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
+import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.core.restapi.idcard.IdCardOcrApi;
+import io.github.liuruinian.ocr.core.restapi.vehiclelicense.VehicleLicenseOcrApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +20,13 @@ public class OcrController {
 
     private IdCardOcrApi idCardOcrApi;
 
+    private VehicleLicenseOcrApi vehicleLicenseOcrApi;
+
+    @Autowired
+    public void setVehicleLicenseOcrApi(VehicleLicenseOcrApi vehicleLicenseOcrApi) {
+        this.vehicleLicenseOcrApi = vehicleLicenseOcrApi;
+    }
+
     @Autowired
     public void setIdCardOcrApi(IdCardOcrApi idCardOcrApi) {
         this.idCardOcrApi = idCardOcrApi;
@@ -29,6 +39,17 @@ public class OcrController {
             return JSONObject.parseObject(responseBody);
         } catch (Exception e) {
             log.error("身份证识别异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ApiOperation("行驶证识别")
+    public JSONObject ocrVehicleLicense(@RequestBody OcrVehicleLicenseParam param) {
+        try {
+            String responseBody = vehicleLicenseOcrApi.ocrVehicleLicense(param);
+            return JSON.parseObject(responseBody);
+        } catch (Exception e) {
+            log.error("行驶证识别异常!", e);
             throw new RuntimeException(e);
         }
     }
