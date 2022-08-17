@@ -10,20 +10,15 @@ import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
 import io.github.liuruinian.ocr.server.controller.AuthTokenController;
 import io.github.liuruinian.ocr.server.controller.OcrController;
 import io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
-import org.springframework.core.env.Environment;
-import org.springframework.core.type.AnnotatedTypeMetadata;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 @Configuration
 @EnableConfigurationProperties(value = {HuaweiOcrProperties.class})
@@ -46,110 +41,85 @@ public class HuaweiOcrAutoConfiguration {
         return new DefaultAuthTokenService(properties, repository);
     }
 
-    /**
-     * 设置AuthToken控制器映射
-     *
-     * @param mapping
-     *         RequestMappingHandlerMapping
-     * @param controller
-     *         AuthTokenController
-     * @throws NoSuchMethodException
-     *         if a matching method is not found
-     *         or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
-     * @throws SecurityException
-     *         If a security manager, <i>s</i>, is present and
-     *         the caller's class loader is not the same as or an
-     *         ancestor of the class loader for the current class and
-     *         invocation of {@link SecurityManager#checkPackageAccess
-     *         s.checkPackageAccess()} denies access to the package
-     *         of this class.
-     */
-    @Autowired(required = false)
-    @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    @Conditional(value = ConditionalRequestMappingHandlerMapping.class)
-    public void setAuthTokenWebMapping(RequestMappingHandlerMapping mapping,
-                                      AuthTokenController controller) throws NoSuchMethodException, SecurityException {
-
-        Method authTokenMethod = AuthTokenController.class.getMethod("getRefreshAuthToken");
-        RequestMappingInfo mappingInfo = RequestMappingInfo.paths("/hwapi/auth/token")
-                .methods(RequestMethod.GET).build();
-
-        mapping.registerMapping(mappingInfo, controller, authTokenMethod);
-    }
-
-    /**
-     * 设置OCR控制器映射
-     *
-     * @param mapping
-     *         RequestMappingHandlerMapping
-     * @param controller
-     *         OcrController
-     * @throws NoSuchMethodException
-     *         if a matching method is not found
-     *         or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
-     * @throws SecurityException
-     *         If a security manager, <i>s</i>, is present and
-     *         the caller's class loader is not the same as or an
-     *         ancestor of the class loader for the current class and
-     *         invocation of {@link SecurityManager#checkPackageAccess
-     *         s.checkPackageAccess()} denies access to the package
-     *         of this class.
-     */
-    @Autowired(required = false)
-    @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    @Conditional(value = ConditionalRequestMappingHandlerMapping.class)
-    public void setOcrWebMapping(RequestMappingHandlerMapping mapping,
-                                 OcrController controller) throws NoSuchMethodException, SecurityException {
-
-        // id-card
-        Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
-        RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/id-card")
-                .methods(RequestMethod.POST).build();
-
-        mapping.registerMapping(idCardMappingInfo, controller, idCardMethod);
-
-        // vehicle-license
-        Method vehicleLicenseMethod = OcrController.class.getMethod("ocrVehicleLicense", OcrVehicleLicenseParam.class);
-        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/vehicle-license")
-                .methods(RequestMethod.POST).build();
-
-        mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
-
-        // driver-license
-        Method driverLicenseMethod = OcrController.class.getMethod("ocrDriverLicense", OcrDriverLicenseParam.class);
-        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/driver-license")
-                .methods(RequestMethod.POST).build();
-
-        mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
-
-        // mvs-invoice
-        Method mvsInvoiceMethod = OcrController.class.getMethod("ocrMvsInvoice", OcrMvsInvoiceParam.class);
-        RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/mvs-invoice")
-                .methods(RequestMethod.POST).build();
-
-        mapping.registerMapping(mvsInvoiceMappingInfo, controller, mvsInvoiceMethod);
-    }
-
-    /**
-     * 条件装配RequestMappingHandlerMapping
-     * <p>
-     *     一些老版本的spring-boot-start-web依赖里面没有registerMapping()
-     * </p>
-     */
-    public static class ConditionalRequestMappingHandlerMapping implements Condition {
-        @SneakyThrows
-        @Override
-        public boolean matches(ConditionContext context, @NonNull AnnotatedTypeMetadata metadata) {
-            Class<?> c = context.getClassLoader().loadClass("org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping");
-            Method[] declaredMethods = c.getDeclaredMethods();
-            for (Method method : declaredMethods) {
-                String methodName = method.getName();
-                if ("registerMapping".equals(methodName)) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-    }
+    ///**
+    // * 设置AuthToken控制器映射
+    // *
+    // * @param mapping
+    // *         RequestMappingHandlerMapping
+    // * @param controller
+    // *         AuthTokenController
+    // * @throws NoSuchMethodException
+    // *         if a matching method is not found
+    // *         or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
+    // * @throws SecurityException
+    // *         If a security manager, <i>s</i>, is present and
+    // *         the caller's class loader is not the same as or an
+    // *         ancestor of the class loader for the current class and
+    // *         invocation of {@link SecurityManager#checkPackageAccess
+    // *         s.checkPackageAccess()} denies access to the package
+    // *         of this class.
+    // */
+    //@Autowired(required = false)
+    //@ConditionalOnBean(RequestMappingHandlerMapping.class)
+    //public void setAuthTokenWebMapping(RequestMappingHandlerMapping mapping,
+    //                                  AuthTokenController controller) throws NoSuchMethodException, SecurityException {
+    //
+    //    Method authTokenMethod = AuthTokenController.class.getMethod("getRefreshAuthToken");
+    //    RequestMappingInfo mappingInfo = RequestMappingInfo.paths("/hwapi/auth/token")
+    //            .methods(RequestMethod.GET).build();
+    //
+    //    mapping.registerMapping(mappingInfo, controller, authTokenMethod);
+    //}
+    //
+    ///**
+    // * 设置OCR控制器映射
+    // *
+    // * @param mapping
+    // *         RequestMappingHandlerMapping
+    // * @param controller
+    // *         OcrController
+    // * @throws NoSuchMethodException
+    // *         if a matching method is not found
+    // *         or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
+    // * @throws SecurityException
+    // *         If a security manager, <i>s</i>, is present and
+    // *         the caller's class loader is not the same as or an
+    // *         ancestor of the class loader for the current class and
+    // *         invocation of {@link SecurityManager#checkPackageAccess
+    // *         s.checkPackageAccess()} denies access to the package
+    // *         of this class.
+    // */
+    //@Autowired(required = false)
+    //@ConditionalOnBean(RequestMappingHandlerMapping.class)
+    //public void setOcrWebMapping(RequestMappingHandlerMapping mapping,
+    //                             OcrController controller) throws NoSuchMethodException, SecurityException {
+    //
+    //    // id-card
+    //    Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
+    //    RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/id-card")
+    //            .methods(RequestMethod.POST).build();
+    //
+    //    mapping.registerMapping(idCardMappingInfo, controller, idCardMethod);
+    //
+    //    // vehicle-license
+    //    Method vehicleLicenseMethod = OcrController.class.getMethod("ocrVehicleLicense", OcrVehicleLicenseParam.class);
+    //    RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/vehicle-license")
+    //            .methods(RequestMethod.POST).build();
+    //
+    //    mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
+    //
+    //    // driver-license
+    //    Method driverLicenseMethod = OcrController.class.getMethod("ocrDriverLicense", OcrDriverLicenseParam.class);
+    //    RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/driver-license")
+    //            .methods(RequestMethod.POST).build();
+    //
+    //    mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
+    //
+    //    // mvs-invoice
+    //    Method mvsInvoiceMethod = OcrController.class.getMethod("ocrMvsInvoice", OcrMvsInvoiceParam.class);
+    //    RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/mvs-invoice")
+    //            .methods(RequestMethod.POST).build();
+    //
+    //    mapping.registerMapping(mvsInvoiceMappingInfo, controller, mvsInvoiceMethod);
+    //}
 }
