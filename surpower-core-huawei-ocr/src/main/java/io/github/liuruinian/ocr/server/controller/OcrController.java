@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -93,7 +94,7 @@ public class OcrController {
     @ApiOperation("将图片转成Base64编码")
     public JSONObject transferImgToBase64(@RequestPart(value = "file") MultipartFile file) {
         try {
-            if (isImage(file.getInputStream())) {
+            if (!isImage(file.getInputStream())) {
                 throw new RuntimeException("当前文件不是图片类型!");
             }
 
@@ -113,8 +114,8 @@ public class OcrController {
 
     public boolean isImage(InputStream stream) {
         try {
-            ImageIO.read(stream);
-            return true;
+            BufferedImage bufferedImage = ImageIO.read(stream);
+            return bufferedImage != null;
         } catch (IOException e) {
             return false;
         }
