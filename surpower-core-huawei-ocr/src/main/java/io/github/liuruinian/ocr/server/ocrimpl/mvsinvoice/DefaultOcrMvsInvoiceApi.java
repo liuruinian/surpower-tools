@@ -1,4 +1,4 @@
-package io.github.liuruinian.ocr.server.ocrimpl.driverlicense;
+package io.github.liuruinian.ocr.server.ocrimpl.mvsinvoice;
 
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpResponse;
@@ -6,7 +6,7 @@ import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
 import io.github.liuruinian.ocr.core.constant.HuaweiCloudOcrApiConstant;
-import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
+import io.github.liuruinian.ocr.core.param.OcrMvsInvoiceParam;
 import io.github.liuruinian.ocr.core.util.HuaweiOcrApiUtil;
 import io.github.liuruinian.ocr.server.properties.HuaweiOcrProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class DefaultOcrDriverLicenseApi extends AbstractOcrDriverLicenseApi {
+public class DefaultOcrMvsInvoiceApi extends AbstractOcrMvsInvoiceApi {
 
     private HuaweiOcrProperties properties;
 
@@ -35,16 +35,16 @@ public class DefaultOcrDriverLicenseApi extends AbstractOcrDriverLicenseApi {
     }
 
     @Override
-    protected String handleDriverLicenseOcr(OcrDriverLicenseParam param) {
-        String requestUri = HuaweiOcrApiUtil.obtainRequestUri(HuaweiCloudOcrApiConstant.OCR_DRIVER_LICENSE_API, properties);
+    protected String handleMvsInvoiceOcr(OcrMvsInvoiceParam param) {
+        String requestUri = HuaweiOcrApiUtil.obtainRequestUri(HuaweiCloudOcrApiConstant.OCR_MVS_INVOICE_API, properties);
 
         if (log.isInfoEnabled()) {
-            log.info("[DefaultOcrDriverLicenseApi] -> driver license ocr request url : {}", requestUri);
+            log.info("[DefaultOcrMvsInvoiceApi] -> mvs invoice ocr request url : {}", requestUri);
         }
 
         try {
             String requestBody = JSONObject.toJSONString(param, true);
-            log.info("[DefaultOcrDriverLicenseApi] -> request body: \n{}", requestBody);
+            log.info("[DefaultOcrMvsInvoiceApi] -> request body: \n{}", requestBody);
 
             HttpResponse response = HttpUtil.createPost(requestUri)
                     .header(Header.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -55,7 +55,7 @@ public class DefaultOcrDriverLicenseApi extends AbstractOcrDriverLicenseApi {
             return response.body();
         } catch (Exception e) {
             if (log.isErrorEnabled()) {
-                log.error("[DefaultOcrDriverLicenseApi] -> driver license ocr error!", e);
+                log.error("[DefaultOcrMvsInvoiceApi] -> mvs invoice ocr error!", e);
             }
             throw new RuntimeException(e);
         }

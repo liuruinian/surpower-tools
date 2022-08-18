@@ -8,6 +8,7 @@
         <module>surpower-core-im-server</module>
         <module>surpower-core-jpush</module>
         <module>surpower-core-huawei-ocr</module>
+        <module>surpower-core-storage</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
@@ -57,7 +58,7 @@
         <maven.plugin.version>3.8.1</maven.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <core.version>1.0.12</core.version>
+        <core.version>1.0.17</core.version>
 
         <lombok.version>1.18.12</lombok.version>
         <fastjson.version>1.2.70</fastjson.version>

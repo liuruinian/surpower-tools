@@ -33,4 +33,14 @@ public class HuaweiCloudOcrApiConstant {
      * 通用文字识别API
      */
     public static final String OCR_GENERAL_TEXT_API = "/ocr/general-text";
+
+    /**
+     * 机动车销售发票识别API
+     */
+    public static final String OCR_MVS_INVOICE_API = "/ocr/mvs-invoice";
+
+    /**
+     * 银行卡识别API
+     */
+    public static final String OCR_BANKCARD_API = "/ocr/bankcard";
 }

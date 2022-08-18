@@ -2,9 +2,7 @@ package io.github.liuruinian.ocr.server.autoconfiguration;
 
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
-import io.github.liuruinian.ocr.core.constant.HuaweiCloudOcrApiConstant;
 import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
-import io.github.liuruinian.ocr.core.param.OcrGeneralTextParam;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
@@ -64,7 +62,7 @@ public class HuaweiOcrAutoConfiguration {
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    public void setUserSignWebMapping(RequestMappingHandlerMapping mapping,
+    public void setAuthTokenWebMapping(RequestMappingHandlerMapping mapping,
                                       AuthTokenController controller) throws NoSuchMethodException, SecurityException {
 
         Method authTokenMethod = AuthTokenController.class.getMethod("getRefreshAuthToken");
@@ -94,8 +92,8 @@ public class HuaweiOcrAutoConfiguration {
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    public void setUserSignWebMapping(RequestMappingHandlerMapping mapping,
-                                      OcrController controller) throws NoSuchMethodException, SecurityException {
+    public void setOcrWebMapping(RequestMappingHandlerMapping mapping,
+                                 OcrController controller) throws NoSuchMethodException, SecurityException {
 
         // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
@@ -117,6 +115,20 @@ public class HuaweiOcrAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
+
+        // mvs-invoice
+        Method mvsInvoiceMethod = OcrController.class.getMethod("ocrMvsInvoice", OcrMvsInvoiceParam.class);
+        RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_MVS_INVOICE_API)
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(mvsInvoiceMappingInfo, controller, mvsInvoiceMethod);
+
+        // bankcard
+        Method bankcardMethod = OcrController.class.getMethod("ocrBankCard", OcrBankCardParam.class);
+        RequestMappingInfo bankcardMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_BANKCARD_API)
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(bankcardMappingInfo, controller, bankcardMethod);
 
         // general-text
         Method generalTextMethod = OcrController.class.getMethod("ocrGeneralText", OcrGeneralTextParam.class);
