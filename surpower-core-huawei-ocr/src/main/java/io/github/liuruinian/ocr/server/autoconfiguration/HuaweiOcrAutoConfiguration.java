@@ -94,28 +94,28 @@ public class HuaweiOcrAutoConfiguration {
 
         // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
-        RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/id-card")
+        RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_ID_CARD_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(idCardMappingInfo, controller, idCardMethod);
 
         // vehicle-license
         Method vehicleLicenseMethod = OcrController.class.getMethod("ocrVehicleLicense", OcrVehicleLicenseParam.class);
-        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/vehicle-license")
+        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_VEHICLE_LICENSE_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
 
         // driver-license
         Method driverLicenseMethod = OcrController.class.getMethod("ocrDriverLicense", OcrDriverLicenseParam.class);
-        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/driver-license")
+        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_DRIVER_LICENSE_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
 
         // mvs-invoice
         Method mvsInvoiceMethod = OcrController.class.getMethod("ocrMvsInvoice", OcrMvsInvoiceParam.class);
-        RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/mvs-invoice")
+        RequestMappingInfo mvsInvoiceMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_MVS_INVOICE_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(mvsInvoiceMappingInfo, controller, mvsInvoiceMethod);
