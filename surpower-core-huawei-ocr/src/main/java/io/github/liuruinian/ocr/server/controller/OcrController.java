@@ -1,5 +1,6 @@
 package io.github.liuruinian.ocr.server.controller;
 
+import cn.hutool.core.codec.Base64;
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
 import io.github.liuruinian.ocr.core.param.OcrGeneralTextParam;
@@ -18,8 +19,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.io.InputStream;
 
 @RestController
 @Slf4j
@@ -80,6 +88,36 @@ public class OcrController {
     @Autowired
     public void setIdCardOcrApi(IdCardOcrApi idCardOcrApi) {
         this.idCardOcrApi = idCardOcrApi;
+    }
+
+    @ApiOperation("将图片转成Base64编码")
+    public JSONObject transferImgToBase64(@RequestPart(value = "file") MultipartFile file) {
+        try {
+            if (isImage(file.getInputStream())) {
+                throw new RuntimeException("当前文件不是图片类型!");
+            }
+
+            byte[] bytes = file.getBytes();
+            String encode = Base64.encode(bytes);
+
+            JSONObject result = new JSONObject();
+            result.put("code", HttpStatus.OK.value());
+            result.put("data", encode);
+
+            return result;
+        } catch (Exception e) {
+            log.error("将图片转成Base64编码异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean isImage(InputStream stream) {
+        try {
+            ImageIO.read(stream);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     @ApiOperation("身份证识别")

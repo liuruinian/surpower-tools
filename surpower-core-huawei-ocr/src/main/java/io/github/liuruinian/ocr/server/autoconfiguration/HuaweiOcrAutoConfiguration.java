@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -93,6 +94,13 @@ public class HuaweiOcrAutoConfiguration {
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
     public void setOcrWebMapping(RequestMappingHandlerMapping mapping,
                                  OcrController controller) throws NoSuchMethodException, SecurityException {
+
+        // encode image file to base64
+        Method encodeBase64Method = OcrController.class.getMethod("transferImgToBase64", MultipartFile.class);
+        RequestMappingInfo encodeBase64MappingInfo = RequestMappingInfo.paths(BASE_PATH + "/transfer/imgbase64")
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(encodeBase64MappingInfo, controller, encodeBase64Method);
 
         // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
