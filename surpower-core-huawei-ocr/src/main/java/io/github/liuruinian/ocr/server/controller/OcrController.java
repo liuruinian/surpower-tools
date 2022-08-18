@@ -2,9 +2,11 @@ package io.github.liuruinian.ocr.server.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
+import io.github.liuruinian.ocr.core.param.OcrGeneralTextParam;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.core.restapi.driverlicense.DriverLicenseOcrApi;
+import io.github.liuruinian.ocr.core.restapi.generalword.GeneralTextApi;
 import io.github.liuruinian.ocr.core.restapi.idcard.IdCardOcrApi;
 import io.github.liuruinian.ocr.core.restapi.vehiclelicense.VehicleLicenseOcrApi;
 import io.swagger.annotations.Api;
@@ -24,6 +26,13 @@ public class OcrController {
     private VehicleLicenseOcrApi vehicleLicenseOcrApi;
 
     private DriverLicenseOcrApi  driverLicenseOcrApi;
+
+    private GeneralTextApi generalTextApi;
+
+    @Autowired
+    public void setGeneralTextApi(GeneralTextApi generalTextApi) {
+        this.generalTextApi = generalTextApi;
+    }
 
     @Autowired
     public void setDriverLicenseOcrApi(DriverLicenseOcrApi driverLicenseOcrApi) {
@@ -69,6 +78,17 @@ public class OcrController {
             return JSONObject.parseObject(responseBody);
         } catch (Exception e) {
             log.error("驾驶证识别异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ApiOperation("通用文本识别 ")
+    public JSONObject ocrGeneralText(@RequestBody OcrGeneralTextParam param) {
+        try {
+            String responseBody = generalTextApi.ocrGeneralText(param);
+            return JSONObject.parseObject(responseBody);
+        } catch (Exception e) {
+            log.error("通用文本识别!", e);
             throw new RuntimeException(e);
         }
     }

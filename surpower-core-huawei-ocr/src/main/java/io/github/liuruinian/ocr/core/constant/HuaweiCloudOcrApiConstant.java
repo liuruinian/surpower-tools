@@ -28,4 +28,9 @@ public class HuaweiCloudOcrApiConstant {
      * 驾驶证识别API
      */
     public static final String OCR_DRIVER_LICENSE_API = "/ocr/driver-license";
+
+    /**
+     * 通用文字识别API
+     */
+    public static final String OCR_GENERAL_TEXT_API = "/ocr/general-text";
 }

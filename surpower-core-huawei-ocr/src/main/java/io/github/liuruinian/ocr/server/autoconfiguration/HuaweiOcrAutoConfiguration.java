@@ -2,7 +2,9 @@ package io.github.liuruinian.ocr.server.autoconfiguration;
 
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
+import io.github.liuruinian.ocr.core.constant.HuaweiCloudOcrApiConstant;
 import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
+import io.github.liuruinian.ocr.core.param.OcrGeneralTextParam;
 import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
 import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
@@ -97,23 +99,30 @@ public class HuaweiOcrAutoConfiguration {
 
         // id-card
         Method idCardMethod = OcrController.class.getMethod("ocrIdCard", OcrIdCardParam.class);
-        RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/id-card")
+        RequestMappingInfo idCardMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_ID_CARD_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(idCardMappingInfo, controller, idCardMethod);
 
         // vehicle-license
         Method vehicleLicenseMethod = OcrController.class.getMethod("ocrVehicleLicense", OcrVehicleLicenseParam.class);
-        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/vehicle-license")
+        RequestMappingInfo vehicleLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_VEHICLE_LICENSE_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(vehicleLicenseMappingInfo, controller, vehicleLicenseMethod);
 
         // driver-license
         Method driverLicenseMethod = OcrController.class.getMethod("ocrDriverLicense", OcrDriverLicenseParam.class);
-        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + "/ocr/driver-license")
+        RequestMappingInfo driverLicenseMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_DRIVER_LICENSE_API)
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(driverLicenseMappingInfo, controller, driverLicenseMethod);
+
+        // general-text
+        Method generalTextMethod = OcrController.class.getMethod("ocrGeneralText", OcrGeneralTextParam.class);
+        RequestMappingInfo generalTextMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_GENERAL_TEXT_API)
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(generalTextMappingInfo, controller, generalTextMethod);
     }
 }
