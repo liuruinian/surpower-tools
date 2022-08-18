@@ -13,8 +13,8 @@ public interface GeneralTextApi {
     /**
      * 识别图片上的文字信息，以JSON格式返回识别的文字和坐标。支持扫描文件、电子文档、书籍、票据和表单等多种场景的文字识别。
      *
-     * @param param
-     * @return
+     * @param param 通用文字识别参数
+     * @return 识别结果
      */
     String ocrGeneralText(OcrGeneralTextParam param);
 }

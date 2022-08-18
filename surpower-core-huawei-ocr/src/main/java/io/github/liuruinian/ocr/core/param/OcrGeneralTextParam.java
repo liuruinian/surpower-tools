@@ -45,10 +45,10 @@ public class OcrGeneralTextParam {
      * <p>
      * 待识别图片如果存在倾斜，建议将此参数设置为“true”。
      */
-    @ApiModelProperty(name = "detect_direction", value = "detect_direction", required = false)
+    @ApiModelProperty(name = "detectDirection", value = "detectDirection", required = false)
     @JsonProperty(value = "detect_direction")
     @JSONField(name = "detect_direction")
-    private Boolean detect_direction;
+    private Boolean detectDirection;
 
     /**
      * 快速模式开关，针对单行文字图片（要求图片只包含一行文字，且文字区域占比超过50%），打开时可以更快返回识别内容。可选值如下所示。
@@ -57,9 +57,9 @@ public class OcrGeneralTextParam {
      * false：关闭快速模式
      * 未传入该参数时默认为false，即关闭快速模式。
      */
-    @ApiModelProperty(name = "quick_mode", value = "quick_mode", required = false)
+    @ApiModelProperty(name = "quickMode", value = "quickMode", required = false)
     @JsonProperty(value = "quick_mode")
     @JSONField(name = "quick_mode")
-    private Boolean quick_mode;
+    private Boolean quickMode;
 
 }

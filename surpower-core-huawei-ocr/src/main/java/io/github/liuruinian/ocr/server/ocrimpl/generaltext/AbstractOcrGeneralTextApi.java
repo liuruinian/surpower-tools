@@ -10,9 +10,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public abstract class AbstractOcrGeneralTextApi implements GeneralTextApi {
 
-
-    protected abstract String handleGeneralTextOcr(OcrGeneralTextParam param);
-
     @Override
     public String ocrGeneralText(OcrGeneralTextParam param) {
         String responseBody = null;
@@ -25,4 +22,6 @@ public abstract class AbstractOcrGeneralTextApi implements GeneralTextApi {
         }
         return responseBody;
     }
+
+    protected abstract String handleGeneralTextOcr(OcrGeneralTextParam param);
 }
