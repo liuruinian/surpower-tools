@@ -48,4 +48,9 @@ public class HuaweiCloudOcrApiConstant {
      * 车牌识别API
      */
     public static final String OCR_LICENSE_PLATE_API = "/ocr/license-plate";
+
+    /**
+     * VIN码识别API
+     */
+    public static final String OCR_VIN_API = "/ocr/vin";
 }

@@ -142,5 +142,12 @@ public class HuaweiOcrAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(licensePlateMappingInfo, controller, licensePlateMethod);
+
+        // vin
+        Method vinMethod = OcrController.class.getMethod("ocrVin", OcrVinParam.class);
+        RequestMappingInfo vinMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_VIN_API)
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(vinMappingInfo, controller, vinMethod);
     }
 }

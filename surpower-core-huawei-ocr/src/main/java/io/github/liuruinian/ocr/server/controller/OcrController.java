@@ -13,6 +13,7 @@ import io.github.liuruinian.ocr.core.restapi.idcard.IdCardOcrApi;
 import io.github.liuruinian.ocr.core.restapi.licenseplate.LicensePlateOcrApi;
 import io.github.liuruinian.ocr.core.restapi.mvsinvoice.MvsInvoiceOcrApi;
 import io.github.liuruinian.ocr.core.restapi.vehiclelicense.VehicleLicenseOcrApi;
+import io.github.liuruinian.ocr.core.restapi.vin.VinOcrApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,13 @@ public class OcrController {
     private BankCardOcrApi       bankCardOcrApi;
 
     private LicensePlateOcrApi   licensePlateOcrApi;
+
+    private VinOcrApi            vinOcrApi;
+
+    @Autowired
+    public void setVinOcrApi(VinOcrApi vinOcrApi) {
+        this.vinOcrApi = vinOcrApi;
+    }
 
     @Autowired
     public void setLicensePlateOcrApi(LicensePlateOcrApi licensePlateOcrApi) {
@@ -147,6 +155,17 @@ public class OcrController {
             return JSONObject.parseObject(responseBody);
         } catch (Exception e) {
             log.error("车牌识别异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ApiOperation("VIN码识别")
+    public JSONObject ocrVin(@RequestBody OcrVinParam param) {
+        try {
+            String responseBody = vinOcrApi.ocrVin(param);
+            return JSONObject.parseObject(responseBody);
+        } catch (Exception e) {
+            log.error("VIN码识别异常!", e);
             throw new RuntimeException(e);
         }
     }
