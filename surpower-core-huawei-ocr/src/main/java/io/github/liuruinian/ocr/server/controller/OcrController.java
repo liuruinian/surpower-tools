@@ -25,10 +25,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @RestController
 @Slf4j
@@ -94,7 +93,7 @@ public class OcrController {
     @ApiOperation("将图片转成Base64编码")
     public JSONObject transferImgToBase64(@RequestPart(value = "file") MultipartFile file) {
         try {
-            if (!isImage(file.getInputStream())) {
+            if (!isImage(Objects.requireNonNull(file.getOriginalFilename()))) {
                 throw new RuntimeException("当前文件不是图片类型!");
             }
 
@@ -112,13 +111,20 @@ public class OcrController {
         }
     }
 
-    public boolean isImage(InputStream stream) {
-        try {
-            BufferedImage bufferedImage = ImageIO.read(stream);
-            return bufferedImage != null;
-        } catch (IOException e) {
-            return false;
-        }
+    public boolean isImage(String filename) {
+        Set<String> imgType = new HashSet<>();
+
+        imgType.add("gif");
+        imgType.add("jpg");
+        imgType.add("jpeg");
+        imgType.add("bmp");
+        imgType.add("png");
+        imgType.add("psd");
+
+        int index = filename.lastIndexOf(".");
+        String extension = filename.substring(index);
+
+        return imgType.contains(extension);
     }
 
     @ApiOperation("身份证识别")
