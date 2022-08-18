@@ -1,10 +1,8 @@
 package io.github.liuruinian.ocr.server.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
-import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
-import io.github.liuruinian.ocr.core.param.OcrMvsInvoiceParam;
-import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
+import io.github.liuruinian.ocr.core.param.*;
+import io.github.liuruinian.ocr.core.restapi.bankcard.BankCardOcrApi;
 import io.github.liuruinian.ocr.core.restapi.driverlicense.DriverLicenseOcrApi;
 import io.github.liuruinian.ocr.core.restapi.idcard.IdCardOcrApi;
 import io.github.liuruinian.ocr.core.restapi.mvsinvoice.MvsInvoiceOcrApi;
@@ -28,6 +26,13 @@ public class OcrController {
     private DriverLicenseOcrApi  driverLicenseOcrApi;
 
     private MvsInvoiceOcrApi     mvsInvoiceOcrApi;
+
+    private BankCardOcrApi       bankCardOcrApi;
+
+    @Autowired
+    public void setBankCardOcrApi(BankCardOcrApi bankCardOcrApi) {
+        this.bankCardOcrApi = bankCardOcrApi;
+    }
 
     @Autowired
     public void setMvsInvoiceOcrApi(MvsInvoiceOcrApi mvsInvoiceOcrApi) {
@@ -89,6 +94,17 @@ public class OcrController {
             return JSONObject.parseObject(responseBody);
         } catch (Exception e) {
             log.error("机动车销售发票识别异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ApiOperation("银行卡识别")
+    public JSONObject ocrBankCard(@RequestBody OcrBankCardParam param) {
+        try {
+            String responseBody = bankCardOcrApi.ocrBankCard(param);
+            return JSONObject.parseObject(responseBody);
+        } catch (Exception e) {
+            log.error("银行卡识别异常!", e);
             throw new RuntimeException(e);
         }
     }
