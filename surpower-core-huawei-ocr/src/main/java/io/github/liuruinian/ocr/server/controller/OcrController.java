@@ -10,6 +10,7 @@ import io.github.liuruinian.ocr.core.restapi.bankcard.BankCardOcrApi;
 import io.github.liuruinian.ocr.core.restapi.driverlicense.DriverLicenseOcrApi;
 import io.github.liuruinian.ocr.core.restapi.generalword.GeneralTextApi;
 import io.github.liuruinian.ocr.core.restapi.idcard.IdCardOcrApi;
+import io.github.liuruinian.ocr.core.restapi.licenseplate.LicensePlateOcrApi;
 import io.github.liuruinian.ocr.core.restapi.mvsinvoice.MvsInvoiceOcrApi;
 import io.github.liuruinian.ocr.core.restapi.vehiclelicense.VehicleLicenseOcrApi;
 import io.swagger.annotations.Api;
@@ -33,6 +34,13 @@ public class OcrController {
     private MvsInvoiceOcrApi     mvsInvoiceOcrApi;
 
     private BankCardOcrApi       bankCardOcrApi;
+
+    private LicensePlateOcrApi   licensePlateOcrApi;
+
+    @Autowired
+    public void setLicensePlateOcrApi(LicensePlateOcrApi licensePlateOcrApi) {
+        this.licensePlateOcrApi = licensePlateOcrApi;
+    }
 
     @Autowired
     public void setBankCardOcrApi(BankCardOcrApi bankCardOcrApi) {
@@ -127,7 +135,18 @@ public class OcrController {
             String responseBody = generalTextApi.ocrGeneralText(param);
             return JSONObject.parseObject(responseBody);
         } catch (Exception e) {
-            log.error("通用文本识别!", e);
+            log.error("通用文本识别异常!", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @ApiOperation("车牌识别")
+    public JSONObject ocrLicensePlate(@RequestBody OcrLicensePlateParam param) {
+        try {
+            String responseBody = licensePlateOcrApi.ocrLicensePlate(param);
+            return JSONObject.parseObject(responseBody);
+        } catch (Exception e) {
+            log.error("车牌识别异常!", e);
             throw new RuntimeException(e);
         }
     }

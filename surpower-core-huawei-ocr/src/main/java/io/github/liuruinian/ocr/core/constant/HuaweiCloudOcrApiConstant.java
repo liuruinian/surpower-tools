@@ -43,4 +43,9 @@ public class HuaweiCloudOcrApiConstant {
      * 银行卡识别API
      */
     public static final String OCR_BANKCARD_API = "/ocr/bankcard";
+
+    /**
+     * 车牌识别API
+     */
+    public static final String OCR_LICENSE_PLATE_API = "/ocr/license-plate";
 }

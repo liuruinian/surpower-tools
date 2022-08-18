@@ -2,9 +2,8 @@ package io.github.liuruinian.ocr.server.autoconfiguration;
 
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenRepository;
 import io.github.liuruinian.ocr.core.authtoken.AuthTokenService;
-import io.github.liuruinian.ocr.core.param.OcrDriverLicenseParam;
-import io.github.liuruinian.ocr.core.param.OcrIdCardParam;
-import io.github.liuruinian.ocr.core.param.OcrVehicleLicenseParam;
+import io.github.liuruinian.ocr.core.constant.HuaweiCloudOcrApiConstant;
+import io.github.liuruinian.ocr.core.param.*;
 import io.github.liuruinian.ocr.server.authtoken.DefaultAuthTokenService;
 import io.github.liuruinian.ocr.server.controller.AuthTokenController;
 import io.github.liuruinian.ocr.server.controller.OcrController;
@@ -136,5 +135,12 @@ public class HuaweiOcrAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(generalTextMappingInfo, controller, generalTextMethod);
+
+        // license-plate
+        Method licensePlateMethod = OcrController.class.getMethod("ocrLicensePlate", OcrLicensePlateParam.class);
+        RequestMappingInfo licensePlateMappingInfo = RequestMappingInfo.paths(BASE_PATH + HuaweiCloudOcrApiConstant.OCR_LICENSE_PLATE_API)
+                .methods(RequestMethod.POST).build();
+
+        mapping.registerMapping(licensePlateMappingInfo, controller, licensePlateMethod);
     }
 }
