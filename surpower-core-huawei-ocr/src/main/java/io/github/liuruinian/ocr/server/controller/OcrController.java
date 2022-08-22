@@ -116,12 +116,12 @@ public class OcrController {
     public boolean isImage(String filename) {
         Set<String> imgType = new HashSet<>();
 
-        imgType.add("gif");
-        imgType.add("jpg");
-        imgType.add("jpeg");
-        imgType.add("bmp");
-        imgType.add("png");
-        imgType.add("psd");
+        imgType.add(".gif");
+        imgType.add(".jpg");
+        imgType.add(".jpeg");
+        imgType.add(".bmp");
+        imgType.add(".png");
+        imgType.add(".psd");
 
         int index = filename.lastIndexOf(".");
         String extension = filename.substring(index);
