@@ -93,6 +93,8 @@ public class OcrController {
     @ApiOperation("将图片转成Base64编码")
     public JSONObject transferImgToBase64(@RequestPart(value = "file") MultipartFile file) {
         try {
+            log.info("original file name: {}", file.getOriginalFilename());
+
             if (!isImage(Objects.requireNonNull(file.getOriginalFilename()))) {
                 throw new RuntimeException("当前文件不是图片类型!");
             }
