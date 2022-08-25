@@ -9,6 +9,7 @@
         <module>surpower-core-jpush</module>
         <module>surpower-core-huawei-ocr</module>
         <module>surpower-core-storage</module>
+        <module>surpower-core-aliyun-phone-protect</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
