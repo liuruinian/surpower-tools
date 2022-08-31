@@ -1,7 +1,9 @@
 package io.github.liuruinian.pp.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.liuruinian.pp.exception.BindExpirationIsNullException;
 import io.github.liuruinian.pp.exception.PhoneNoAIsNullException;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +14,6 @@ import java.io.Serializable;
 
 /**
  * @author liuruinian
- * @version 2021-11-05
  * <p>
  *     Axn绑定参数
  * </p>
@@ -27,6 +28,8 @@ public class AxnBindParam implements Serializable {
      * AXN中的A号码。 A号码可设置为手机号码或固定电话，固定电话需要加区号，区号和号码中间不需要加连字符.
      * eg: 139****0000
      */
+    @ApiModelProperty(value = "AXN中的A号码")
+    @JsonProperty(value = "PhoneNoA")
     private String      phoneNoA;
 
     /**
@@ -35,6 +38,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 138****0000
      */
+    @ApiModelProperty(value = "AXN中的B号码")
+    @JsonProperty(value = "PhoneNoB")
     private String      phoneNoB;
 
     /**
@@ -43,6 +48,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 139****0000
      */
+    @ApiModelProperty(value = "AXN中的X号码")
+    @JsonProperty(value = "PhoneNoX")
     private String      phoneNoX;
 
     /**
@@ -52,6 +59,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 上海
      */
+    @ApiModelProperty(value = "指定城市进行X号码的选号")
+    @JsonProperty(value = "ExpectCity")
     private String      expectCity;
 
     /**
@@ -60,6 +69,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 2021-09-05 12:00:00
      */
+    @ApiModelProperty(value = "绑定关系的过期时间")
+    @JsonProperty(value = "Expiration")
     private String      expiration;
 
     /**
@@ -67,30 +78,40 @@ public class AxnBindParam implements Serializable {
      * true: 录音
      * false: 不录音（默认值）
      */
+    @ApiModelProperty(value = "是否需要针对该绑定关系产生的所有通话录制通话录音")
+    @JsonProperty(value = "IsRecordingEnabled")
     private Boolean     isRecordingEnabled = false;
 
     /**
-     * 适用于原阿里云大客户，阿里云用户可忽略。
+     * 号码类型. 适用于原阿里云大客户，阿里云用户可忽略。
      * eg: AXB_170
      */
+    @ApiModelProperty(value = "号码类型")
+    @JsonProperty(value = "NoType")
     private String      noType;
 
     /**
      * 外部业务扩展字段，通话记录回执消息中会回传此参数。
      * eg: abc123456
      */
+    @ApiModelProperty(value = "外部业务扩展字段，通话记录回执消息中会回传此参数")
+    @JsonProperty(value = "OutId")
     private String      outId;
 
     /**
      * 外部业务ID。
      * eg: 34553330****
      */
+    @ApiModelProperty(value = "外部业务ID")
+    @JsonProperty(value = "OutOrderId")
     private String      outOrderId;
 
     /**
      * 重置绑定关系中的号码显示逻辑。固定取值：1（主被叫显示中间号码X）。
      * 由于运营商监管限制，呼叫时显示真实号码的设置不生效。
      */
+    @ApiModelProperty(value = "重置绑定关系中的号码显示逻辑")
+    @JsonProperty(value = "CallDisplayType")
     private Integer     callDisplayType = 1;
 
     /**
@@ -104,6 +125,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: {"AXNRing_N":"100000001","AXNRing_A":"100000001"}
      */
+    @ApiModelProperty(value = "设置AXN分机号绑定关系中的企业彩铃放音编码")
+    @JsonProperty(value = "RingConfig")
     private String      ringConfig;
 
     /**
@@ -111,6 +134,8 @@ public class AxnBindParam implements Serializable {
      * false：关闭（默认值）
      * true：开启
      */
+    @ApiModelProperty(value = "ASR状态")
+    @JsonProperty(value = "ASRStatus")
     private Boolean     asrStatus = false;
 
     /**
@@ -118,6 +143,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 980abddb908f48e8b987cb2cd303****
      */
+    @ApiModelProperty(value = "ASR模型ID")
+    @JsonProperty(value = "ASRModelId")
     private String      asrModelId;
 
     /**
@@ -125,6 +152,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: 10
      */
+    @ApiModelProperty(value = "顺振时长")
+    @JsonProperty(value = "CallTimeout")
     private Integer     callTimeout;
 
     /**
@@ -134,6 +163,8 @@ public class AxnBindParam implements Serializable {
      *
      * eg: CONTROL_AX_DISABLE
      */
+    @ApiModelProperty(value = "单通呼叫限制的状态")
+    @JsonProperty(value = "CallRestrict")
     private String      callRestrict;
 
     /** 必填参数校验 */

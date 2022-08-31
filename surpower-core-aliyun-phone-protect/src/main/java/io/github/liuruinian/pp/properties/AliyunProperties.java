@@ -27,8 +27,6 @@ public class AliyunProperties {
      */
     private String      poolKey;
 
-    private Boolean     enable = true;
-
     /**
      * 回执消息队列--消息类型
      * <p>

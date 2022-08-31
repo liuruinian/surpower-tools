@@ -21,13 +21,6 @@
   ],
   "properties": [
     {
-      "name": "phone.protection.aliyun.enable",
-      "type": "java.lang.Boolean",
-      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
-      "description": "是否开启阿里云号码隐私保护.",
-      "defaultValue": "true"
-    },
-    {
       "name": "phone.protection.aliyun.endpoint",
       "type": "java.lang.String",
       "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
