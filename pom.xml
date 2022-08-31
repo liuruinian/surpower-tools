@@ -60,7 +60,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- history version 1.0.24 -->
-        <core.version>1.0.2</core.version>
+        <core.version>1.0.3</core.version>
 
         <lombok.version>1.18.12</lombok.version>
         <fastjson.version>1.2.70</fastjson.version>
