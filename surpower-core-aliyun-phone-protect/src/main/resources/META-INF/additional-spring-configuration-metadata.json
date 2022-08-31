@@ -1,0 +1,216 @@
+{
+  "groups": [
+    {
+      "name": "phone.protection.aliyun",
+      "type": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "阿里云号码隐私保护服务配置."
+    },
+    {
+      "name": "phone.protection.async",
+      "type": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "sourceType": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "description": "阿里云号码隐私保护异步配置."
+    },
+    {
+      "name": "phone.protection.web",
+      "type": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "号码隐私保护web端点配置."
+    }
+  ],
+  "properties": [
+    {
+      "name": "phone.protection.aliyun.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "是否开启阿里云号码隐私保护.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.aliyun.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "endpoint.",
+      "defaultValue": "cn-hangzhou"
+    },
+    {
+      "name": "phone.protection.aliyun.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "accessKeyId."
+    },
+    {
+      "name": "phone.protection.aliyun.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "accessKeySecret."
+    },
+    {
+      "name": "phone.protection.aliyun.pool-key",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "poolKey."
+    },
+    {
+      "name": "phone.protection.aliyun.message-type",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "回执消息类型(SecretStartReport、SecretReport、SecretSmsIntercept、SecretRecording)若是多个则逗号分隔."
+    },
+    {
+      "name": "phone.protection.aliyun.enable-secret-start-report",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "是否启动呼叫发起时话单报告.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "phone.protection.aliyun.secret-start-report-queue-name",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "呼叫发起时话单报告队列名称."
+    },
+    {
+      "name": "phone.protection.aliyun.enable-secret-report",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "是否启用呼叫结束后话单报告.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "phone.protection.aliyun.secret-report-queue-name",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "呼叫结束后话单报告队列名称."
+    },
+    {
+      "name": "phone.protection.aliyun.enable-secret-recording",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "是否启用录音完成事件消息.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "phone.protection.aliyun.secret-recording-queue-name",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "录音完成事件消息队列名称."
+    },
+    {
+      "name": "phone.protection.async.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "是否启用异步支持.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.async.core-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "核心线程数量."
+    },
+    {
+      "name": "phone.protection.async.maximum-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.pp.properties.AliyunProperties",
+      "description": "最大线程数量."
+    },
+    {
+      "name": "phone.protection.async.keep-alive-time",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "description": "线程最大空闲时间."
+    },
+    {
+      "name": "phone.protection.async.unit",
+      "type": "java.util.concurrent.TimeUnit",
+      "sourceType": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "description": "线程最大空闲时间单位."
+    },
+    {
+      "name": "phone.protection.async.queue-capacity",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "description": "队列容量.",
+      "defaultValue": "Integer.MAX_VALUE"
+    },
+    {
+      "name": "phone.protection.async.reject-policy",
+      "type": "io.github.liuruinian.pp.properties.RejectPolicy",
+      "sourceType": "io.github.liuruinian.pp.properties.AsyncProperties",
+      "description": "拒绝策略, 可选值:Abort、Caller、Discard、DiscardOldest.",
+      "defaultValue": "Abort"
+    },
+    {
+      "name": "phone.protection.web.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用web端点.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "phone.protection.web.base-path",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "基础路径.",
+      "defaultValue": "/pnp"
+    },
+    {
+      "name": "phone.protection.web.enable-bind-axn",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用AXN绑定接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-bind-detail",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用绑定详情接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-unbind",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用解绑接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-update-bind",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用解绑接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-buy-secret",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用隐私号码购买接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-release-secret",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用释放隐私号码接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-obtain-secret-record",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用获取录音文件接口.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "phone.protection.web.enable-call-available",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.pp.properties.PhoneProtectWebProperties",
+      "description": "是否启用查询呼叫可用性接口.",
+      "defaultValue": "true"
+    }
+  ]
+}
