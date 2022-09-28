@@ -122,6 +122,7 @@ public class XxlJobHelper {
      * append exception stack
      *
      * @param e exception
+     * @return boolean
      */
     public static boolean log(Throwable e) {
 

@@ -51,7 +51,6 @@ public class DateUtil {
      *
      * @param date date
      * @return formatDate
-     * @throws ParseException java.lang.Exception
      */
     public static String formatDate(Date date) {
         return format(date, DATE_FORMAT);
@@ -62,7 +61,6 @@ public class DateUtil {
      *
      * @param date date
      * @return formatDateTime
-     * @throws ParseException java.lang.Exception
      */
     public static String formatDateTime(Date date) {
         return format(date, DATETIME_FORMAT);
@@ -74,7 +72,6 @@ public class DateUtil {
      * @param date date
      * @param patten patten
      * @return format date
-     * @throws ParseException java.lang.Exception
      */
     public static String format(Date date, String patten) {
         return getDateFormat(patten).format(date);
@@ -85,7 +82,6 @@ public class DateUtil {
      *
      * @param dateString dateString
      * @return parse date string
-     * @throws ParseException java.lang.Exception
      */
     public static Date parseDate(String dateString){
         return parse(dateString, DATE_FORMAT);
@@ -96,7 +92,6 @@ public class DateUtil {
      *
      * @param dateString dateString
      * @return parse datetime string
-     * @throws ParseException java.lang.Exception
      */
     public static Date parseDateTime(String dateString) {
         return parse(dateString, DATETIME_FORMAT);
@@ -108,7 +103,6 @@ public class DateUtil {
      * @param dateString dateString
      * @param pattern pattern
      * @return parse date
-     * @throws ParseException java.lang.Exception
      */
     public static Date parse(String dateString, String pattern) {
         try {
