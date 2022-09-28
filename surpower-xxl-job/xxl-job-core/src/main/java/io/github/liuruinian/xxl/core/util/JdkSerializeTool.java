@@ -48,6 +48,8 @@ public class JdkSerializeTool {
      * 将byte[] - Object
      *
      * @param bytes bytes
+     * @param <T> T
+     * @param clazz clazz
      * @return Object
      */
     public static  <T> Object deserialize(byte[] bytes, Class<T> clazz) {

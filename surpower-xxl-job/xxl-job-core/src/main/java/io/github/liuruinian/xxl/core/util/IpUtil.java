@@ -175,7 +175,7 @@ public class IpUtil {
     /**
      * get ip:port
      *
-     * @param port
+     * @param port port
      * @return String
      */
     public static String getIpPort(int port){
