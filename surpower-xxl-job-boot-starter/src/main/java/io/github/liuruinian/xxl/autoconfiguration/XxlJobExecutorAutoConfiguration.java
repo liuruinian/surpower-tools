@@ -1,6 +1,6 @@
 package io.github.liuruinian.xxl.autoconfiguration;
 
-import io.github.liuruinian.xxl.core.executor.impl.XxlJobSpringExecutor;
+import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import io.github.liuruinian.xxl.properties.XxlJobProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
