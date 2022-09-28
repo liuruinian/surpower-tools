@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {
+      "name": "baidu.uid.web",
+      "type": "io.github.liuruinian.uid.properties.UidWebProperties",
+      "sourceType": "io.github.liuruinian.uid.properties.UidWebProperties",
+      "description": "UIDWeb配置."
+    }
+  ],
+  "properties": [
+    {
+      "name": "baidu.uid.web.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.uid.properties.UidWebProperties",
+      "description": "是否启用web端点.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "baidu.uid.web.base-path",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.uid.properties.UidWebProperties",
+      "description": "基础路径.",
+      "defaultValue": "/baidu"
+    },
+    {
+      "name": "baidu.uid.web.enable-uid-generate",
+      "type": "java.lang.Boolean",
+      "sourceType": "io.github.liuruinian.uid.properties.UidWebProperties",
+      "description": "是否启用生成uid的web端点.",
+      "defaultValue": "true"
+    }
+  ]
+}

@@ -12,6 +12,7 @@
         <module>surpower-core-aliyun-phone-protect</module>
         <module>surpower-xxl-job-boot-starter</module>
         <module>xxl-job-core</module>
+        <module>uid-generator-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
@@ -75,6 +76,8 @@
         <fastjson.version>1.2.70</fastjson.version>
         <hutool.version>5.6.2</hutool.version>
         <swagger.version>3.0.0</swagger.version>
+
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
 
         <spring-boot.version>2.7.2</spring-boot.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>
