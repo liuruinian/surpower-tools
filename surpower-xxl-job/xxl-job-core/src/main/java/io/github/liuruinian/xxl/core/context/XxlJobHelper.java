@@ -23,7 +23,7 @@ public class XxlJobHelper {
     /**
      * current JobId
      *
-     * @return
+     * @return job id
      */
     public static long getJobId() {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -37,7 +37,7 @@ public class XxlJobHelper {
     /**
      * current JobParam
      *
-     * @return
+     * @return JobParam
      */
     public static String getJobParam() {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -53,7 +53,7 @@ public class XxlJobHelper {
     /**
      * current JobLogFileName
      *
-     * @return
+     * @return JobLogFileName
      */
     public static String getJobLogFileName() {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -69,7 +69,7 @@ public class XxlJobHelper {
     /**
      * current ShardIndex
      *
-     * @return
+     * @return ShardIndex
      */
     public static int getShardIndex() {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -83,7 +83,7 @@ public class XxlJobHelper {
     /**
      * current ShardTotal
      *
-     * @return
+     * @return ShardTotal
      */
     public static int getShardTotal() {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -121,7 +121,7 @@ public class XxlJobHelper {
     /**
      * append exception stack
      *
-     * @param e
+     * @param e exception
      */
     public static boolean log(Throwable e) {
 
@@ -136,8 +136,8 @@ public class XxlJobHelper {
     /**
      * append log
      *
-     * @param callInfo
-     * @param appendLog
+     * @param callInfo callInfo
+     * @param appendLog appendLog
      */
     private static boolean logDetail(StackTraceElement callInfo, String appendLog) {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();
@@ -174,7 +174,7 @@ public class XxlJobHelper {
     /**
      * handle success
      *
-     * @return
+     * @return handleSuccess
      */
     public static boolean handleSuccess(){
         return handleResult(XxlJobContext.HANDLE_COCE_SUCCESS, null);
@@ -183,8 +183,8 @@ public class XxlJobHelper {
     /**
      * handle success with log msg
      *
-     * @param handleMsg
-     * @return
+     * @param handleMsg handleMsg
+     * @return handleSuccess
      */
     public static boolean handleSuccess(String handleMsg) {
         return handleResult(XxlJobContext.HANDLE_COCE_SUCCESS, handleMsg);
@@ -193,7 +193,7 @@ public class XxlJobHelper {
     /**
      * handle fail
      *
-     * @return
+     * @return handleFail
      */
     public static boolean handleFail(){
         return handleResult(XxlJobContext.HANDLE_COCE_FAIL, null);
@@ -202,8 +202,8 @@ public class XxlJobHelper {
     /**
      * handle fail with log msg
      *
-     * @param handleMsg
-     * @return
+     * @param handleMsg handleMsg
+     * @return handleFail
      */
     public static boolean handleFail(String handleMsg) {
         return handleResult(XxlJobContext.HANDLE_COCE_FAIL, handleMsg);
@@ -212,7 +212,7 @@ public class XxlJobHelper {
     /**
      * handle timeout
      *
-     * @return
+     * @return handleTimeout
      */
     public static boolean handleTimeout(){
         return handleResult(XxlJobContext.HANDLE_COCE_TIMEOUT, null);
@@ -221,8 +221,8 @@ public class XxlJobHelper {
     /**
      * handle timeout with log msg
      *
-     * @param handleMsg
-     * @return
+     * @param handleMsg handleMsg
+     * @return handleTimeout
      */
     public static boolean handleTimeout(String handleMsg){
         return handleResult(XxlJobContext.HANDLE_COCE_TIMEOUT, handleMsg);
@@ -235,8 +235,8 @@ public class XxlJobHelper {
      *      500 : fail
      *      502 : timeout
      *
-     * @param handleMsg
-     * @return
+     * @param handleMsg handleMsg
+     * @return handleResult
      */
     public static boolean handleResult(int handleCode, String handleMsg) {
         XxlJobContext xxlJobContext = XxlJobContext.getXxlJobContext();

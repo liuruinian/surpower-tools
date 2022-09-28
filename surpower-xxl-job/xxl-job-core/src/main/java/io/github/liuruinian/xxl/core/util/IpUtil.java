@@ -49,8 +49,8 @@ public class IpUtil {
     /**
      * valid Inet4Address
      *
-     * @param address
-     * @return
+     * @param address address
+     * @return isValidV4Address
      */
     private static boolean isValidV4Address(InetAddress address) {
         if (address == null || address.isLoopbackAddress()) {

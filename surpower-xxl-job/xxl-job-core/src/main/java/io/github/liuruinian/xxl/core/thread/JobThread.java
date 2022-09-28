@@ -52,8 +52,8 @@ public class JobThread extends Thread{
     /**
      * new trigger to queue
      *
-     * @param triggerParam
-     * @return
+     * @param triggerParam triggerParam
+     * @return ReturnT
      */
 	public ReturnT<String> pushTriggerQueue(TriggerParam triggerParam) {
 		// avoid repeat
@@ -70,7 +70,7 @@ public class JobThread extends Thread{
     /**
      * kill job thread
      *
-     * @param stopReason
+     * @param stopReason stopReason
      */
 	public void toStop(String stopReason) {
 		/**
@@ -84,7 +84,7 @@ public class JobThread extends Thread{
 
     /**
      * is running job
-     * @return
+     * @return isRunningOrHasQueue
      */
     public boolean isRunningOrHasQueue() {
         return running || triggerQueue.size()>0;

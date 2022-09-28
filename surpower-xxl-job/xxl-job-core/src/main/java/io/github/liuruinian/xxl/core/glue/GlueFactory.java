@@ -39,9 +39,8 @@ public class GlueFactory {
 	/**
 	 * load new instance, prototype
 	 *
-	 * @param codeSource
-	 * @return
-	 * @throws Exception
+	 * @param codeSource codeSource
+	 * @return IJobHandler
 	 */
 	public IJobHandler loadNewInstance(String codeSource) throws Exception{
 		if (codeSource!=null && codeSource.trim().length()>0) {
@@ -81,7 +80,7 @@ public class GlueFactory {
 	/**
 	 * inject service of bean field
 	 *
-	 * @param instance
+	 * @param instance instance
 	 */
 	public void injectService(Object instance) {
 		// do something

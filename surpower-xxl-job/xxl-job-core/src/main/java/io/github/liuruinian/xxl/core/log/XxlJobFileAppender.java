@@ -59,9 +59,9 @@ public class XxlJobFileAppender {
 	/**
 	 * log filename, like "logPath/yyyy-MM-dd/9999.log"
 	 *
-	 * @param triggerDate
-	 * @param logId
-	 * @return
+	 * @param triggerDate triggerDate
+	 * @param logId logId
+	 * @return logFileName
 	 */
 	public static String makeLogFileName(Date triggerDate, long logId) {
 
@@ -83,8 +83,8 @@ public class XxlJobFileAppender {
 	/**
 	 * append log
 	 *
-	 * @param logFileName
-	 * @param appendLog
+	 * @param logFileName logFileName
+	 * @param appendLog appendLog
 	 */
 	public static void appendLog(String logFileName, String appendLog) {
 
@@ -132,7 +132,7 @@ public class XxlJobFileAppender {
 	/**
 	 * support read log-file
 	 *
-	 * @param logFileName
+	 * @param logFileName logFileName
 	 * @return log content
 	 */
 	public static LogResult readLog(String logFileName, int fromLineNum){
@@ -188,7 +188,7 @@ public class XxlJobFileAppender {
 
 	/**
 	 * read log data
-	 * @param logFile
+	 * @param logFile logFile
 	 * @return log line content
 	 */
 	public static String readLines(File logFile){

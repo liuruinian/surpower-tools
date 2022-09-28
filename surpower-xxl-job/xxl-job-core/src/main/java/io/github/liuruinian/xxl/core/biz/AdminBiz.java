@@ -16,8 +16,8 @@ public interface AdminBiz {
     /**
      * callback
      *
-     * @param callbackParamList
-     * @return
+     * @param callbackParamList callbackParamList
+     * @return ReturnT
      */
     public ReturnT<String> callback(List<HandleCallbackParam> callbackParamList);
 
@@ -27,16 +27,16 @@ public interface AdminBiz {
     /**
      * registry
      *
-     * @param registryParam
-     * @return
+     * @param registryParam registryParam
+     * @return ReturnT
      */
     public ReturnT<String> registry(RegistryParam registryParam);
 
     /**
      * registry remove
      *
-     * @param registryParam
-     * @return
+     * @param registryParam registryParam
+     * @return ReturnT
      */
     public ReturnT<String> registryRemove(RegistryParam registryParam);
 
