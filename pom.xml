@@ -11,6 +11,7 @@
         <module>surpower-core-storage</module>
         <module>surpower-core-aliyun-phone-protect</module>
         <module>surpower-xxl-job</module>
+        <module>surpower-xxl-job-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
