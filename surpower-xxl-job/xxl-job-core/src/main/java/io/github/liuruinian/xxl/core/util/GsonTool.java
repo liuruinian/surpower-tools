@@ -33,6 +33,7 @@ public class GsonTool {
      *
      * @param json json
      * @param classOfT classOfT
+     * @param <T> T
      * @return obj
      */
     public static <T> T fromJson(String json, Class<T> classOfT) {
@@ -40,11 +41,12 @@ public class GsonTool {
     }
 
     /**
-     * json 转成 特定的 rawClass<classOfT> 的Object
+     * json 转成 特定的 classOfT 的Object
      *
      * @param json json
      * @param classOfT classOfT
      * @param argClassOfT argClassOfT
+     * @param <T> T
      * @return obj
      */
     public static <T> T fromJson(String json, Class<T> classOfT, Class argClassOfT) {
@@ -75,6 +77,7 @@ public class GsonTool {
      *
      * @param json json
      * @param classOfT classOfT
+     * @param <T> T
      * @return list
      */
     public static <T> List<T> fromJsonList(String json, Class<T> classOfT) {

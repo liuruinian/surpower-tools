@@ -133,6 +133,7 @@ public class XxlJobFileAppender {
 	 * support read log-file
 	 *
 	 * @param logFileName logFileName
+	 * @param fromLineNum fromLineNum
 	 * @return log content
 	 */
 	public static LogResult readLog(String logFileName, int fromLineNum){

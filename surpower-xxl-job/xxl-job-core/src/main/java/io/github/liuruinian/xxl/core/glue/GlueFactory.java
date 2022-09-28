@@ -41,6 +41,7 @@ public class GlueFactory {
 	 *
 	 * @param codeSource codeSource
 	 * @return IJobHandler
+	 * @throws Exception java.lang.Exception
 	 */
 	public IJobHandler loadNewInstance(String codeSource) throws Exception{
 		if (codeSource!=null && codeSource.trim().length()>0) {
