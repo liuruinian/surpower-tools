@@ -13,6 +13,7 @@
         <module>surpower-xxl-job-boot-starter</module>
         <module>xxl-job-core</module>
         <module>uid-generator-spring-boot-starter</module>
+        <module>sentinel-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
@@ -137,6 +138,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
