@@ -14,6 +14,7 @@
         <module>xxl-job-core</module>
         <module>uid-generator-spring-boot-starter</module>
         <module>sentinel-spring-boot-starter</module>
+        <module>redis-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
@@ -79,6 +80,9 @@
         <swagger.version>3.0.0</swagger.version>
 
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
+
+        <redission.version>3.11.6</redission.version>
+        <kryo.version>4.0.2</kryo.version>
 
         <spring-boot.version>2.7.2</spring-boot.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>
