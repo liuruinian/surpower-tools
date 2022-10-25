@@ -38,6 +38,7 @@ public class RandomLoadBalancer<T, C> extends AbstractLoadBalancer<T, C> {
 
     @Override
     protected T choose0(List<TargetWrapper<T>> activeTargetList, C chooseReferenceObject) {
+        // core: new Random().nextInt(int bound)
         TargetWrapper<T> targetWrapper = activeTargetList.get(new Random().nextInt(activeTargetList.size()));
 
         return targetWrapper == null ? null : targetWrapper.getTarget();
