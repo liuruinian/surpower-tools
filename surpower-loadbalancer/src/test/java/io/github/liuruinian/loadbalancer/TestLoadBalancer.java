@@ -33,4 +33,30 @@ public class TestLoadBalancer {
             }
         }
     }
+
+    /**
+     * test round robin load balancer
+     */
+    @Test
+    public void testRoundRobinLoadBalancer() {
+        List<TargetWrapper<String>> wrapperList = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            TargetWrapper<String> targetWrapper = TargetWrapper.of("TW" + i);
+            targetWrapper.setActive(true);
+            wrapperList.add(targetWrapper);
+        }
+
+        RoundRobinLoadBalancer<String, Object> loadBalancer = new RoundRobinLoadBalancer<>(wrapperList);
+
+        for (int i = 0; i < 20; i++) {
+            String choose = loadBalancer.choose();
+            System.out.println("round robin load balancer choose: " + choose);
+            try {
+                TimeUnit.SECONDS.sleep(3L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
