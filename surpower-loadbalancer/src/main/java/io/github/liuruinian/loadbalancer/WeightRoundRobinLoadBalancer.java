@@ -7,6 +7,15 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * weight round robin Load Balancer
+ *
+ * @param <T>
+ *         target class
+ * @param <C>
+ *         choose reference object
+ * @author liuruinian
+ */
 public class WeightRoundRobinLoadBalancer<T, C> extends AbstractLoadBalancer<T, C> {
 
     // ~ Fields --------------------------------------------------------------------
@@ -19,9 +28,18 @@ public class WeightRoundRobinLoadBalancer<T, C> extends AbstractLoadBalancer<T, 
 
     // ~ Constructors --------------------------------------------------------------
 
+    /**
+     * instantiation Load Balancer with CopyOnWriteArrayList
+     */
     public WeightRoundRobinLoadBalancer() {
     }
 
+    /**
+     * instantiation Load Balancer with appoint list
+     *
+     * @param targetList
+     *         target object list
+     */
     public WeightRoundRobinLoadBalancer(List<TargetWrapper<T>> targetList) {
         super(targetList);
     }
