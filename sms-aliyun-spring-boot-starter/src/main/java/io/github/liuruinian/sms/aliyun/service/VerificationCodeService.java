@@ -30,6 +30,4 @@ public interface VerificationCodeService {
     String MSG_KEY_EXPIRATION_TIME_OF_MINUTES = "expirationTimeOfMinutes";
 
     // ~ Methods -------------------------------------------------------------
-
-
 }
