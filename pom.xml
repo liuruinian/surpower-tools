@@ -16,6 +16,7 @@
         <module>sentinel-spring-boot-starter</module>
         <module>redis-spring-boot-starter</module>
         <module>surpower-loadbalancer</module>
+        <module>sms-aliyun-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>
