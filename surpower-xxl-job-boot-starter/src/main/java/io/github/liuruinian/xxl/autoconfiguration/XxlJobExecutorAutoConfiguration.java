@@ -5,7 +5,6 @@ import io.github.liuruinian.xxl.properties.XxlJobProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
  * </p>
  */
 @Configuration
-@ComponentScan(basePackages = {"io.github.liuruinian.xxl"})
 @EnableConfigurationProperties(value = {XxlJobProperties.class})
 @Slf4j
 public class XxlJobExecutorAutoConfiguration {
