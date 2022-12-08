@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {
+      "name": "baidu.ccr",
+      "type": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "华为云OCR相关配置参数."
+    }
+  ],
+  "properties": [
+    {
+      "name": "baidu.ccr.api-key",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "内容审核API Key."
+    },
+    {
+      "name": "baidu.ccr.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "内容审核Secret Key."
+    },
+    {
+      "name": "baidu.ccr.token-uri",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "AccessToken请求地址.",
+      "defaultValue": "https://aip.baidubce.com/oauth/2.0/token"
+    },
+    {
+      "name": "baidu.ccr.token-key-prefix",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "AccessToken缓存Key前缀.",
+      "defaultValue": "baidu-ccr-token-"
+    },
+    {
+      "name": "baidu.ccr.token-expire",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "AccessToken有效期（默认30天）.",
+      "defaultValue": 30
+    },
+    {
+      "name": "baidu.ccr.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.ccr.server.properties.BaiduCcrProperties",
+      "description": "api请求地址.",
+      "defaultValue": "https://aip.baidubce.com/rest/2.0"
+    }
+  ]
+}
