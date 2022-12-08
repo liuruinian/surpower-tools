@@ -12,6 +12,7 @@ public interface AuthTokenRepository {
      * 根据唯一键获取AccessToken
      *
      * @param key 唯一键
+     * @return access_token
      */
     String findOne(String key);
 
@@ -25,6 +26,7 @@ public interface AuthTokenRepository {
 
     /**
      * 根据唯一键删除AccessToken
+     * @param key key
      */
     void delete(String key);
 }
