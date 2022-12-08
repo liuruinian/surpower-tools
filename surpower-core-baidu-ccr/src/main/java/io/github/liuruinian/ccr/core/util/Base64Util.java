@@ -15,6 +15,10 @@ public class Base64Util {
     public Base64Util() {
     }
 
+    /**
+     * @param from 图片字节流
+     * @return base64编码
+     */
     public static String encode(byte[] from) {
         StringBuilder to = new StringBuilder((int) ((double) from.length * 1.34D) + 3);
         int num = 0;

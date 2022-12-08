@@ -9,6 +9,9 @@ public class FileUtil {
 
     /**
      * 读取文件内容，作为字符串返回
+     *
+     * @param filePath 文件路径
+     * @return 文件内容
      */
     public static String readFileAsString(String filePath) throws IOException {
         File file = new File(filePath);
@@ -36,6 +39,9 @@ public class FileUtil {
 
     /**
      * 根据文件路径读取byte[] 数组
+     *
+     * @param filePath 文件路径
+     * @return 文件字节流
      */
     public static byte[] readFileByBytes(String filePath) throws IOException {
         File file = new File(filePath);
