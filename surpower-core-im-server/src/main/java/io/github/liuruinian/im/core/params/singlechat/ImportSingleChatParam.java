@@ -23,7 +23,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel("批量发单聊请求体")
+@ApiModel("导入单聊消息请求体")
 public class ImportSingleChatParam implements Serializable {
 
     @JsonProperty(value = "SyncFromOldSystem")

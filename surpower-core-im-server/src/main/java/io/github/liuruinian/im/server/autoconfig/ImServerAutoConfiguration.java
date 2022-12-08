@@ -24,6 +24,7 @@ import io.github.liuruinian.im.server.api.recentcontacts.DefaultRecentContactsAp
 import io.github.liuruinian.im.server.api.relationchain.DefaultRelationChainApi;
 import io.github.liuruinian.im.server.api.singlechat.DefaultSingleChatApi;
 import io.github.liuruinian.im.server.controller.accountmanage.AccountManageController;
+import io.github.liuruinian.im.server.controller.allpush.AllMemberPushController;
 import io.github.liuruinian.im.server.controller.callback.CallbackController;
 import io.github.liuruinian.im.server.controller.globalmute.GlobalMuteController;
 import io.github.liuruinian.im.server.controller.groupmanage.GroupManageController;
@@ -331,7 +332,7 @@ public class ImServerAutoConfiguration {
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
     public void setAllPushWebMapping(RequestMappingHandlerMapping mapping,
-                                            PortraitController controller) throws NoSuchMethodException, SecurityException {
+                                     AllMemberPushController controller) throws NoSuchMethodException, SecurityException {
 
     }
 
