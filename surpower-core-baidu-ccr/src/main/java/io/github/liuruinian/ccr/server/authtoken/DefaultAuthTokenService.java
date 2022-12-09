@@ -30,7 +30,8 @@ public class DefaultAuthTokenService extends AbstractAuthTokenService {
             return accessToken;
         }
 
-        String tokenUri = properties.getTokenUri();
+        String s = properties.getTokenUri() + "?grant_type=client_credentials&client_id=%s&client_secret=%s";
+        String tokenUri = String.format(s, properties.getApiKey(), properties.getSecretKey());
 
         HttpResponse response = HttpUtil.createPost(tokenUri)
                 .header(Header.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
