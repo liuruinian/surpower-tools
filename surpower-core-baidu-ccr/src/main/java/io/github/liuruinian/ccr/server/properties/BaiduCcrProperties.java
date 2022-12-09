@@ -9,13 +9,13 @@ public class BaiduCcrProperties {
 
     private String secretKey;
 
-    private String tokenUri;
+    private String tokenUri = "https://aip.baidubce.com/oauth/2.0/token";
 
-    private String tokenKeyPrefix;
+    private String tokenKeyPrefix = "baidu-ccr-token-";
 
-    private Long   tokenExpire;
+    private Long   tokenExpire = 30L;
 
-    private String endpoint;
+    private String endpoint = "https://aip.baidubce.com/rest/2.0";
 
     public String getEndpoint() {
         return endpoint;
