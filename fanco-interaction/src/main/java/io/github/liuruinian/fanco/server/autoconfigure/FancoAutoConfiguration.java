@@ -1,8 +1,10 @@
 package io.github.liuruinian.fanco.server.autoconfigure;
 
 import io.github.liuruinian.fanco.core.constants.FancoConstants;
+import io.github.liuruinian.fanco.core.entity.ActivityListParam;
 import io.github.liuruinian.fanco.core.token.AuthTokenRepository;
 import io.github.liuruinian.fanco.core.token.AuthTokenService;
+import io.github.liuruinian.fanco.server.controller.activities.ActivitiesController;
 import io.github.liuruinian.fanco.server.controller.auth.AuthTokenController;
 import io.github.liuruinian.fanco.server.properties.FancoProperties;
 import io.github.liuruinian.fanco.server.restapi.activities.ActivitiesService;
@@ -79,5 +81,36 @@ public class FancoAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(mappingInfo, controller, method);
+    }
+
+    /**
+     * @param mapping    RequestMappingHandlerMapping
+     * @param controller ActivitiesController
+     * @throws NoSuchMethodException if a matching method is not found
+     *                               or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
+     * @throws SecurityException     If a security manager, <i>s</i>, is present and
+     *                               the caller's class loader is not the same as or an
+     *                               ancestor of the class loader for the current class and
+     *                               invocation of {@link SecurityManager#checkPackageAccess
+     *                               s.checkPackageAccess()} denies access to the package
+     *                               of this class.
+     */
+    @Autowired(required = false)
+    @ConditionalOnBean(RequestMappingHandlerMapping.class)
+    public void setActivitiesWebMapping(RequestMappingHandlerMapping mapping,
+                                       ActivitiesController controller) throws NoSuchMethodException, SecurityException {
+
+        // activity list
+        Method listMethod = ActivitiesController.class.getMethod("list", ActivityListParam.class);
+        RequestMappingInfo listMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/list-page")
+                .methods(RequestMethod.GET).build();
+
+        mapping.registerMapping(listMappingInfo, controller, listMethod);
+
+        // activity detail
+        Method detailMethod = ActivitiesController.class.getMethod("detail", Integer.class);
+        RequestMappingInfo detailMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/one")
+                .methods(RequestMethod.GET).build();
+        mapping.registerMapping(detailMappingInfo, controller, detailMethod);
     }
 }
