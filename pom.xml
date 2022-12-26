@@ -18,6 +18,7 @@
         <module>surpower-loadbalancer</module>
         <module>sms-aliyun-spring-boot-starter</module>
         <module>surpower-core-baidu-ccr</module>
+        <module>fanco-interaction</module>
     </modules>
     <packaging>pom</packaging>
     <name>surpower-tools</name>

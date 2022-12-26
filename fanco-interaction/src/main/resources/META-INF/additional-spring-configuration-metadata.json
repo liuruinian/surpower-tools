@@ -1,0 +1,44 @@
+{
+  "groups": [
+    {
+      "name": "fanco",
+      "type": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "凡科互动相关配置参数."
+    }
+  ],
+  "properties": [
+    {
+      "name": "fanco.client-id",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "clientId."
+    },
+    {
+      "name": "fanco.client-secret",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "clientSecret."
+    },
+    {
+      "name": "fanco.access-token-uri",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "oauth2 access_token请求地址."
+    },
+    {
+      "name": "fanco.access-token-key-prefix",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "access token key prefix.",
+      "defaultValue": "fanco-access-token-"
+    },
+    {
+      "name": "fanco.auth-token-expire",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "access token expire , default 7200 seconds.",
+      "defaultValue": 7100
+    }
+  ]
+}
