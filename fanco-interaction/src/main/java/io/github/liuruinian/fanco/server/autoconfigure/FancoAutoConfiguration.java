@@ -5,6 +5,8 @@ import io.github.liuruinian.fanco.core.token.AuthTokenRepository;
 import io.github.liuruinian.fanco.core.token.AuthTokenService;
 import io.github.liuruinian.fanco.server.controller.auth.AuthTokenController;
 import io.github.liuruinian.fanco.server.properties.FancoProperties;
+import io.github.liuruinian.fanco.server.restapi.activities.ActivitiesService;
+import io.github.liuruinian.fanco.server.restapi.activities.DefaultActivitiesService;
 import io.github.liuruinian.fanco.server.token.DefaultAuthTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
 import java.lang.reflect.Method;
 
 /**
@@ -44,21 +47,28 @@ public class FancoAutoConfiguration {
     }
 
     /**
+     * create activities service bean
      *
-     * @param mapping
-     *         RequestMappingHandlerMapping
-     * @param controller
-     *         AuthTokenController
-     * @throws NoSuchMethodException
-     *         if a matching method is not found
-     *         or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
-     * @throws SecurityException
-     *         If a security manager, <i>s</i>, is present and
-     *         the caller's class loader is not the same as or an
-     *         ancestor of the class loader for the current class and
-     *         invocation of {@link SecurityManager#checkPackageAccess
-     *         s.checkPackageAccess()} denies access to the package
-     *         of this class.
+     * @param properties       fanco properties
+     * @param authTokenService auth token service
+     * @return ActivitiesService
+     */
+    @Bean
+    public ActivitiesService activitiesService(FancoProperties properties, AuthTokenService authTokenService) {
+        return new DefaultActivitiesService(properties, authTokenService);
+    }
+
+    /**
+     * @param mapping    RequestMappingHandlerMapping
+     * @param controller AuthTokenController
+     * @throws NoSuchMethodException if a matching method is not found
+     *                               or if the name is "&lt;init&gt;"or "&lt;clinit&gt;".
+     * @throws SecurityException     If a security manager, <i>s</i>, is present and
+     *                               the caller's class loader is not the same as or an
+     *                               ancestor of the class loader for the current class and
+     *                               invocation of {@link SecurityManager#checkPackageAccess
+     *                               s.checkPackageAccess()} denies access to the package
+     *                               of this class.
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
