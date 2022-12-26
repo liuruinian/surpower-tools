@@ -11,6 +11,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "fanco")
 public class FancoProperties {
 
+    /** aid */
+    private Integer aid = 28140240;
+
     /** client id */
     private String clientId = "fk-hd-open-client-121";
 
@@ -25,6 +28,14 @@ public class FancoProperties {
 
     /** access token expire , default 7200 seconds */
     private Long    authTokenExpire = 7100L;
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public void setAid(Integer aid) {
+        this.aid = aid;
+    }
 
     public Long getAuthTokenExpire() {
         return authTokenExpire;

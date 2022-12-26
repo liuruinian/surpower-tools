@@ -9,6 +9,12 @@
   ],
   "properties": [
     {
+      "name": "fanco.aid",
+      "type": "java.lang.Integer",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "aid."
+    },
+    {
       "name": "fanco.client-id",
       "type": "java.lang.String",
       "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",

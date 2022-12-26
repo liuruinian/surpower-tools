@@ -1,4 +1,4 @@
-package io.github.liuruinian.fanco.server.controller;
+package io.github.liuruinian.fanco.server.controller.auth;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.fanco.core.token.AuthTokenService;

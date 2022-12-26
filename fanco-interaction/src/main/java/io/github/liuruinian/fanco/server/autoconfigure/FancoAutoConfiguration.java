@@ -3,7 +3,7 @@ package io.github.liuruinian.fanco.server.autoconfigure;
 import io.github.liuruinian.fanco.core.constants.FancoConstants;
 import io.github.liuruinian.fanco.core.token.AuthTokenRepository;
 import io.github.liuruinian.fanco.core.token.AuthTokenService;
-import io.github.liuruinian.fanco.server.controller.AuthTokenController;
+import io.github.liuruinian.fanco.server.controller.auth.AuthTokenController;
 import io.github.liuruinian.fanco.server.properties.FancoProperties;
 import io.github.liuruinian.fanco.server.token.DefaultAuthTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
