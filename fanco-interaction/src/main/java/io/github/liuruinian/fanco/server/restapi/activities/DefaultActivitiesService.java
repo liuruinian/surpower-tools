@@ -92,7 +92,7 @@ public class DefaultActivitiesService extends AbstractActivitiesService {
         CloseableHttpResponse response = null;
 
         try {
-            URIBuilder builder = new URIBuilder(FancoConstants.ACTIVITIES_LIST_API_URL);
+            URIBuilder builder = new URIBuilder(FancoConstants.ACTIVITIES_DETAIL_API_URL);
             builder.setParameter("activityId", String.valueOf(activityId));
 
             if (properties.getAid() != null) {
