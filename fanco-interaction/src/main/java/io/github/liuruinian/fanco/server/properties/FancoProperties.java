@@ -20,6 +20,9 @@ public class FancoProperties {
     /** client secret */
     private String clientSecret = "72ad4fc0d02f438e95c55af068517f3e";
 
+    /** authorization_code_url */
+    private String authorizationCodeUrl = "http://127.0.0.1:8080/fanco/oauth/authorization_code";
+
     /** access token uri */
     private String accessTokenUri = "https://openauth-hd.fkw.com/oauth/partner/token?auth_type=partner_client_credential";
 
@@ -28,6 +31,14 @@ public class FancoProperties {
 
     /** access token expire , default 7200 seconds */
     private Long    authTokenExpire = 7100L;
+
+    public String getAuthorizationCodeUrl() {
+        return authorizationCodeUrl;
+    }
+
+    public void setAuthorizationCodeUrl(String authorizationCodeUrl) {
+        this.authorizationCodeUrl = authorizationCodeUrl;
+    }
 
     public Integer getAid() {
         return aid;

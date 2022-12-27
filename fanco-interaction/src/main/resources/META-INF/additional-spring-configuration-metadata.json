@@ -27,6 +27,13 @@
       "description": "clientSecret."
     },
     {
+      "name": "fanco.authorization-code-url",
+      "type": "java.lang.String",
+      "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",
+      "description": "authorization_code_url.",
+      "defaultValue": "http://127.0.0.1:8080/fanco/oauth/authorization_code"
+    },
+    {
       "name": "fanco.access-token-uri",
       "type": "java.lang.String",
       "sourceType": "io.github.liuruinian.fanco.server.properties.FancoProperties",

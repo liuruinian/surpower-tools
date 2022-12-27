@@ -2,6 +2,7 @@ package io.github.liuruinian.fanco.server.autoconfigure;
 
 import io.github.liuruinian.fanco.core.constants.FancoConstants;
 import io.github.liuruinian.fanco.core.entity.ActivityListParam;
+import io.github.liuruinian.fanco.core.entity.NoSenseActivity;
 import io.github.liuruinian.fanco.core.token.AuthTokenRepository;
 import io.github.liuruinian.fanco.core.token.AuthTokenService;
 import io.github.liuruinian.fanco.server.controller.activities.ActivitiesController;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 /**
@@ -81,6 +83,14 @@ public class FancoAutoConfiguration {
                 .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(mappingInfo, controller, method);
+
+        // authorization_code
+        Method authCodeMethod =
+                AuthTokenController.class.getMethod("authorizationCode", HttpServletRequest.class);
+        RequestMappingInfo authCodeMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/oauth/authorization_code")
+                .methods(RequestMethod.GET).build();
+
+        mapping.registerMapping(authCodeMappingInfo, controller, authCodeMethod);
     }
 
     /**
@@ -103,7 +113,7 @@ public class FancoAutoConfiguration {
         // activity list
         Method listMethod = ActivitiesController.class.getMethod("list", ActivityListParam.class);
         RequestMappingInfo listMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/list-page")
-                .methods(RequestMethod.GET).build();
+                .methods(RequestMethod.POST).build();
 
         mapping.registerMapping(listMappingInfo, controller, listMethod);
 
@@ -112,5 +122,11 @@ public class FancoAutoConfiguration {
         RequestMappingInfo detailMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/one")
                 .methods(RequestMethod.GET).build();
         mapping.registerMapping(detailMappingInfo, controller, detailMethod);
+
+        // no sense activity
+        Method noSenseActMethod = ActivitiesController.class.getMethod("noSenseIntoActivity", NoSenseActivity.class);
+        RequestMappingInfo noSenseActMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/nosense")
+                .methods(RequestMethod.POST).build();
+        mapping.registerMapping(noSenseActMappingInfo, controller, noSenseActMethod);
     }
 }
