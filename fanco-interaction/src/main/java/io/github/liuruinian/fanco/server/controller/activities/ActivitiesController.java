@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Base64Utils;
@@ -36,6 +37,7 @@ public class ActivitiesController {
     }
 
     @Autowired
+    @Lazy
     public void setActivitiesService(ActivitiesService activitiesService) {
         this.activitiesService = activitiesService;
     }
