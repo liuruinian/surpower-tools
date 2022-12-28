@@ -2,6 +2,7 @@ package io.github.liuruinian.fanco.server.restapi.activities;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.liuruinian.fanco.core.entity.ActivityListParam;
+import io.github.liuruinian.fanco.core.entity.NoSenseActivity;
 
 /**
  * activities service
@@ -26,4 +27,12 @@ public interface ActivitiesService {
      * @return activity detail
      */
     JSONObject detail(Integer activityId);
+
+    /**
+     * compose of activity url
+     *
+     * @param param NoSenseActivity
+     * @return activity url
+     */
+    String composeActivityUrl(NoSenseActivity param);
 }
