@@ -119,7 +119,7 @@ public class FancoAutoConfiguration {
 
         // activity detail
         Method detailMethod = ActivitiesController.class.getMethod("detail", Integer.class);
-        RequestMappingInfo detailMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/one")
+        RequestMappingInfo detailMappingInfo = RequestMappingInfo.paths(FancoConstants.BASE_PATH + "/activities/one/{activity_id}")
                 .methods(RequestMethod.GET).build();
         mapping.registerMapping(detailMappingInfo, controller, detailMethod);
 
