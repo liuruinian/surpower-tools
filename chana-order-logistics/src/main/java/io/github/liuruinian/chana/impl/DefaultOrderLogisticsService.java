@@ -24,9 +24,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class DefaultOrderLogisticsService implements OrderLogisticsService, ApplicationContextAware {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     private ApplicationContext applicationContext;
+
+    private OrderLogisticsProcessor processor = null;
 
     public DefaultOrderLogisticsService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -39,6 +41,16 @@ public class DefaultOrderLogisticsService implements OrderLogisticsService, Appl
 
     @Override
     public Map<String, Object> importOrderLogistics(InputStream inputStream) throws IOException {
+        Map<String, Object> result = new HashMap<>();
+
+        try {
+            processor = applicationContext.getBean(OrderLogisticsProcessor.class);
+        } catch (BeansException e) {
+            if (log.isInfoEnabled()) {
+                log.info("application context can't find OrderLogisticsProcessor!");
+            }
+        }
+
         List<String> success = new ArrayList<>();
         AtomicInteger failed = new AtomicInteger(0);
 
@@ -63,44 +75,40 @@ public class DefaultOrderLogisticsService implements OrderLogisticsService, Appl
             private void saveData() {
                 for (OrderLogisticsImportTemplate data : list) {
                     try {
-                        OrderLogisticsProcessor processor = applicationContext.getBean(OrderLogisticsProcessor.class);
-                        try {
-                            data.checkRequired();
+                        data.checkRequired();
+                        if (processor != null) {
                             processor.preProcessBeforeImport(data);
+                        }
 
-                            String orderId = data.getOrderId();
-                            String logisticsName = data.getLogisticsName();
-                            String logisticsId = data.getLogisticsId();
+                        String orderId = data.getOrderId();
+                        String logisticsName = data.getLogisticsName();
+                        String logisticsId = data.getLogisticsId();
 
-                            String sql = "INSERT INTO `order_logistics` (`id`, `order_id`, `logistics_id`, `logistics_name`, `is_wx`) " +
-                                    "VALUES (?, ?, ?, ?, ?) " +
-                                    "ON DUPLICATE KEY UPDATE " +
-                                    "`order_id` = VALUES(`order_id`), `logistics_id` = VALUES(`logistics_id`), `logistics_name` = VALUES(`logistics_name`), `is_wx` = 1";
-                            int update = jdbcTemplate.update(sql, preparedStatement -> {
-                                preparedStatement.setString(1, IdUtil.fastSimpleUUID());
-                                preparedStatement.setString(2, orderId);
-                                preparedStatement.setString(3, logisticsId);
-                                preparedStatement.setString(4, logisticsName);
-                                preparedStatement.setInt(5, 1);
-                            });
+                        String sql = "INSERT INTO `order_logistics` (`id`, `order_id`, `logistics_id`, `logistics_name`, `is_wx`) " +
+                                "VALUES (?, ?, ?, ?, ?) " +
+                                "ON DUPLICATE KEY UPDATE " +
+                                "`order_id` = VALUES(`order_id`), `logistics_id` = VALUES(`logistics_id`), `logistics_name` = VALUES(`logistics_name`), `is_wx` = 1";
+                        int update = jdbcTemplate.update(sql, preparedStatement -> {
+                            preparedStatement.setString(1, IdUtil.fastSimpleUUID());
+                            preparedStatement.setString(2, orderId);
+                            preparedStatement.setString(3, logisticsId);
+                            preparedStatement.setString(4, logisticsName);
+                            preparedStatement.setInt(5, 1);
+                        });
 
-                            if (update > 0) {
-                                success.add(orderId);
+                        if (update > 0) {
+                            success.add(orderId);
+                            if (processor != null) {
                                 processor.postProcessBeforeImport(data);
                             }
-                        } catch (Exception e) {
-                            failed.incrementAndGet();
                         }
-                    } catch (BeansException e) {
-                        if (log.isInfoEnabled()) {
-                            log.info("application context can't find OrderLogisticsProcessor!");
-                        }
+                    } catch (Exception e) {
+                        failed.incrementAndGet();
                     }
                 }
             }
-        });
+        }).sheet().headRowNumber(1).doReadSync();
 
-        Map<String, Object> result = new HashMap<>();
         result.put("success", success);
         result.put("failed", failed);
 

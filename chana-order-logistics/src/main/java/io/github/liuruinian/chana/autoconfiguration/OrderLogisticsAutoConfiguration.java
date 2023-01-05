@@ -43,7 +43,7 @@ public class OrderLogisticsAutoConfiguration {
      */
     @Autowired(required = false)
     @ConditionalOnBean(RequestMappingHandlerMapping.class)
-    public void setAuthTokenWebMapping(RequestMappingHandlerMapping mapping,
+    public void setOrderLogisticsWebMapping(RequestMappingHandlerMapping mapping,
                                        OrderLogisticsController controller) throws NoSuchMethodException, SecurityException {
         Method method = OrderLogisticsController.class.getMethod("importOrderLogistics", MultipartFile.class);
         RequestMappingInfo mappingInfo = RequestMappingInfo.paths("/order/logistics/import")
