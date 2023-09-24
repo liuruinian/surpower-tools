@@ -213,6 +213,9 @@
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
+                    <includes>
+                        <include></include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
